@@ -78,7 +78,7 @@ for(const t of tags)out(`tags/${slug(t)}/index.html`,page({title:`#${t}`,desc:`P
 out('404.html',page({title:'Page not found',desc:'Not found',path:'/404.html',image:cfg.defaultImage,body:'<h1>Page not found</h1><p><a href="/">Back to home</a></p>'}));
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
   ['/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
-out('rss.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="${base}/rss.xsl"?>\n<rss version="2.0"><channel><title>${esc(cfg.name)}</title><link>${cfg.url}/</link><description>${esc(cfg.tagline)}</description>`+
+out('rss.xml',`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${esc(cfg.name)}</title><link>${cfg.url}/</link><description>${esc(cfg.tagline)}</description>`+
   posts.map(p=>`<item><title>${esc(p.title)}</title><link>${abs(`/posts/${p.slug}/`)}</link><pubDate>${new Date(p.date).toUTCString()}</pubDate><description>${esc(p.desc)}</description></item>`).join('')+'</channel></rss>');
 out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
 console.log(`Built ${posts.length} post(s) into dist/`);
