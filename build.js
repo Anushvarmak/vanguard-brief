@@ -51,8 +51,8 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${img}">
 <meta name="twitter:card" content="summary_large_image"><link rel="alternate" type="application/rss+xml" title="${esc(cfg.name)}" href="/rss.xml">
 <link rel="stylesheet" href="/style.css">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}<a href="/rss.xml">RSS</a></nav></header>
-<main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
+<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
+<main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only. · <a href="/rss.xml">RSS</a></footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
 }
@@ -78,11 +78,11 @@ for(const t of tags)out(`tags/${slug(t)}/index.html`,page({title:`#${t}`,desc:`P
 out('404.html',page({title:'Page not found',desc:'Not found',path:'/404.html',image:cfg.defaultImage,body:'<h1>Page not found</h1><p><a href="/">Back to home</a></p>'}));
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
   ['/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
-out('rss.xml',`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${esc(cfg.name)}</title><link>${cfg.url}/</link><description>${esc(cfg.tagline)}</description>`+
+out('rss.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="${base}/rss.xsl"?>\n<rss version="2.0"><channel><title>${esc(cfg.name)}</title><link>${cfg.url}/</link><description>${esc(cfg.tagline)}</description>`+
   posts.map(p=>`<item><title>${esc(p.title)}</title><link>${abs(`/posts/${p.slug}/`)}</link><pubDate>${new Date(p.date).toUTCString()}</pubDate><description>${esc(p.desc)}</description></item>`).join('')+'</channel></rss>');
 out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
 console.log(`Built ${posts.length} post(s) into dist/`);
 if(DEV)http.createServer((q,r)=>{let f=path.join('dist',decodeURIComponent(q.url.split('?')[0]));
   if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');
-  fs.readFile(f,(e,d)=>{r.writeHead(e?404:200,{'Content-Type':{'.html':'text/html','.css':'text/css','.xml':'application/xml','.jpg':'image/jpeg','.png':'image/png'}[path.extname(f)]||'application/octet-stream'});r.end(e?'Not found':d);});
+  fs.readFile(f,(e,d)=>{r.writeHead(e?404:200,{'Content-Type':{'.html':'text/html','.css':'text/css','.xml':'application/xml','.xsl':'application/xml','.jpg':'image/jpeg','.png':'image/png'}[path.extname(f)]||'application/octet-stream'});r.end(e?'Not found':d);});
 }).listen(3000,()=>console.log('Preview at http://localhost:3000  (Ctrl+C to stop)'));
