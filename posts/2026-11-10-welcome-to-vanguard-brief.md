@@ -12,6 +12,5 @@ Vanguard Brief explains the **Indian Armed Forces**, their technology and career
 
 - Breakdowns of defence deals and new systems
 - Plain-language explainers on military technology
-- Career guidance for people who want to serve
 
 > Replace this post with your own. Put pictures in `static/images` and use `![caption](/images/photo.jpg)`.

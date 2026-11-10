@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" role="img" aria-label="Diagram showing Para SF, MARCOS and Garud linked by AFSOD, with Bhairav battalions and the NSG shown separately">
+<rect width="700" height="340" rx="12" fill="#181e16" stroke="#2a3326"/>
+<g font-family="system-ui,Segoe UI,sans-serif" text-anchor="middle" fill="#e7e9df">
+<text x="350" y="32" font-size="18" font-weight="700" fill="#b9a44c">Who does what: India's special forces</text>
+<g stroke="#b9a44c" fill="#10140f"><rect x="25" y="52" width="200" height="82" rx="8"/><rect x="250" y="52" width="200" height="82" rx="8"/><rect x="475" y="52" width="200" height="82" rx="8"/></g>
+<text x="125" y="84" font-size="18" font-weight="700">Para (SF)</text><text x="125" y="106" font-size="13" fill="#9aa38d">Indian Army, land</text><text x="125" y="124" font-size="13" fill="#9aa38d">Raised 1966</text>
+<text x="350" y="84" font-size="18" font-weight="700">MARCOS</text><text x="350" y="106" font-size="13" fill="#9aa38d">Indian Navy, sea</text><text x="350" y="124" font-size="13" fill="#9aa38d">Raised 1987</text>
+<text x="575" y="84" font-size="18" font-weight="700">Garud</text><text x="575" y="106" font-size="13" fill="#9aa38d">Indian Air Force, air</text><text x="575" y="124" font-size="13" fill="#9aa38d">Formed 2004</text>
+<g stroke="#b9a44c" stroke-width="2"><line x1="125" y1="134" x2="125" y2="166"/><line x1="350" y1="134" x2="350" y2="166"/><line x1="575" y1="134" x2="575" y2="166"/></g>
+<rect x="25" y="166" width="650" height="50" rx="8" fill="#2a3326" stroke="#b9a44c"/>
+<text x="350" y="196" font-size="16" font-weight="700">AFSOD: joint tri-service special operations division</text>
+<g stroke="#9aa38d" stroke-dasharray="5 4" fill="#10140f"><rect x="25" y="240" width="320" height="76" rx="8"/><rect x="355" y="240" width="320" height="76" rx="8"/></g>
+<text x="185" y="268" font-size="15" font-weight="700">Bhairav light commando battalions</text><text x="185" y="290" font-size="13" fill="#9aa38d">Army, between infantry and Para SF</text>
+<text x="515" y="268" font-size="15" font-weight="700">NSG</text><text x="515" y="290" font-size="13" fill="#9aa38d">Home Ministry, counter-terror force</text>
+</g></svg>

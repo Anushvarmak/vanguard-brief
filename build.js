@@ -12,19 +12,25 @@ const inline=s=>esc(s)
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>')
   .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');
 function md(src){
-  const out=[];let list=null,para=[];
+  const out=[];let list=null,para=[],tbl=[],q=null;
   const flush=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
   const end=()=>{if(list){out.push(`</${list}>`);list=null;}};
+  const row=(l,t)=>'<tr>'+l.trim().replace(/^\||\|$/g,'').split('|').map(c=>`<${t}>${inline(c.trim())}</${t}>`).join('')+'</tr>';
+  const endTbl=()=>{if(tbl.length){out.push('<div class="tbl"><table>'+row(tbl[0],'th')+tbl.slice(2).map(l=>row(l,'td')).join('')+'</table></div>');tbl=[];}};
   for(const line of src.split('\n')){
     let m;
+    if(line.startsWith('|')){flush();end();tbl.push(line);continue;}
+    endTbl();
     if(!line.trim()){flush();end();}
+    else if(m=line.match(/^Q:\s*(.*)/)){flush();end();q=m[1];}
+    else if(q!==null&&(m=line.match(/^A:\s*(.*)/))){out.push(`<details><summary>${inline(q)}</summary><p>${inline(m[1])}</p></details>`);q=null;}
     else if(m=line.match(/^(#{1,4})\s+(.*)/)){flush();end();out.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`);}
     else if(m=line.match(/^>\s?(.*)/)){flush();end();out.push('<blockquote>'+inline(m[1])+'</blockquote>');}
     else if(m=line.match(/^([-*]|\d+\.)\s+(.*)/)){flush();const t=/\d/.test(m[1])?'ol':'ul';if(list!==t){end();out.push(`<${t}>`);list=t;}out.push('<li>'+inline(m[2])+'</li>');}
     else if(/^---+$/.test(line)){flush();end();out.push('<hr>');}
     else{end();para.push(line);}
   }
-  flush();end();return out.join('\n');
+  flush();end();endTbl();return out.join('\n');
 }
 const posts=fs.readdirSync('posts').filter(f=>f.endsWith('.md')).map(f=>{
   const raw=fs.readFileSync('posts/'+f,'utf8').replace(/\r\n/g,'\n');

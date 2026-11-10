@@ -10,3 +10,7 @@ small,.tags a{color:var(--mute);font-size:.85rem}.tags a{margin-right:.6rem}
 article h1{font-size:2rem;line-height:1.25}blockquote{border-left:3px solid var(--acc);margin:1rem 0;padding:.2rem 1rem;color:var(--mute)}
 code{background:var(--card);padding:.1em .3em;border-radius:4px}.share a{display:inline-block;margin:.3rem .5rem .3rem 0;padding:.4rem .9rem;border:1px solid var(--acc);border-radius:20px;text-decoration:none;font-size:.9rem}
 footer{color:var(--mute);font-size:.85rem;border-top:1px solid var(--line);margin-top:2rem}
+.tbl{overflow-x:auto;margin:1rem 0}table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.5}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top}th{background:var(--card);color:var(--acc)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.6rem 1rem;margin:.6rem 0}summary{cursor:pointer;font-weight:600}
+h2{margin-top:2rem}article img{display:block;margin:1rem auto}
