@@ -96,6 +96,8 @@ out('author/index.html', page({
 <h2>A Note from the Author</h2>
 <p>Welcome to <strong>Vanguard Brief</strong>. I started this publication because defence and military topics are often overshadowed by heavy jargon, unverified rumors, and dramatic headlines. Many curious citizens, students, defence aspirants, and parents want to genuinely understand how our armed forces function, how modern defence tech works, and what military careers look like — without having to decode military acronyms or sift through sensationalism.</p>
 <p>By day, I work as an IT support engineer. My fascination with the armed forces, defence systems, and global security is deeply personal. I am not affiliated with the government, any defence contractor, or military branch. This blog is my independent space to study, digest, and explain defence topics in plain, accessible language.</p>
+<p><img src="/images/author-full.jpg" alt="Anush Varma with the 155mm/52Cal Mounted Gun System" style="max-height:520px;object-fit:cover;width:auto;margin:1.5rem auto;border-radius:8px;border:1px solid var(--line)"></p>
+<small style="display:block;text-align:center;color:var(--mute);margin-top:-0.8rem;margin-bottom:1.5rem">At a defence exhibition with a 155mm/52 Calibre Mounted Gun System (MGS)</small>
 <h2>Strict Editorial Standards</h2>
 <ul>
   <li><strong>100% Open-Source Intelligence (OSINT):</strong> Every post relies exclusively on publicly verifiable information — official Ministry of Defence releases, PIB announcements, parliamentary committee reports, think-tank papers, and credible journalism.</li>
