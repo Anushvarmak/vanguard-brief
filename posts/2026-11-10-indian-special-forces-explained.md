@@ -15,7 +15,6 @@ Each of India's three armed services has its own special force, and since 2019 a
 - You cannot join any of them straight from civilian life. You first join the parent service, then **volunteer** and pass a very tough selection.
 - In 2025, the Army announced **Bhairav light commando battalions**, a new layer between regular infantry and Para SF.
 
-![Diagram of who does what in India's special forces](/images/special-forces-overview.svg)
 
 *India's special forces at a glance: three service forces, one joint division, and two related forces shown separately*
 
@@ -41,15 +40,27 @@ They are "special" because of **selection and training**, not because of weapons
 
 ### Para (SF): the Army's special forces
 
+![Para (SF) Balidaan badge](/images/para-sf-insignia.png)
+
+*The Para (SF) Balidaan badge.*
+
 Para (SF) battalions are the special forces side of the **Parachute Regiment**. They were raised in 1966, after the 1965 war, from earlier parachute commando units. Reports say one Parachute Regiment battalion was converted to a special forces role in 1978, and more were converted over the following decades.
 
 The Parachute Regiment's motto is "Shatrujeet", which means "Conqueror of Enemies". The Army does not publish how many Para (SF) battalions it has. Open sources have given figures from about nine to about fifteen, depending on the year, so treat any exact number with care.
 
 One point causes much confusion. **"Para" and "Para (SF)" are not the same.** Many Parachute Regiment battalions are airborne infantry, which means they are trained to be dropped by parachute. Only the designated SF battalions are special forces.
 
+![Para (SF) personnel in a forest](/images/parasf-group.png)
+
+*Para (SF) personnel.*
+
 Para SF is best known to the public for the cross-border operation across the Line of Control in September 2016, which the Indian government publicly acknowledged. Reports linked Para SF to it. I do not discuss details of any operation.
 
 ### MARCOS: the Navy's marine commandos
+
+![MARCOS emblem](/images/marcos-insignia.png)
+
+*MARCOS emblem.*
 
 MARCOS stands for **Marine Commandos**. The idea began in 1985 and the force was raised in February 1987. It was first called the Indian Marine Special Force, then renamed the Marine Commando Force. The short name MARCOS came afterwards.
 
@@ -57,11 +68,23 @@ They are specialists in operations from the sea, rivers and creeks, in amphibiou
 
 MARCOS were part of the response to the 2008 Mumbai attacks.
 
+![MARCOS personnel with a helicopter](/images/marcos-group.png)
+
+*MARCOS personnel.*
+
 ### Garud Commando Force: the Air Force's special forces
+
+![Garud Commando Force insignia](/images/garud-insignia.png)
+
+*Garud Commando Force insignia.*
 
 The Garud Commando Force was formed in **September 2004**. The reason was practical. After attacks on air bases in Jammu and Kashmir in 2001, the Air Force decided it needed its own trained force to protect its critical bases and aircraft instead of depending on others.
 
 The name comes from Garuda, the divine bird of Hindu tradition. Garud tasks include protecting and seizing airfields, special reconnaissance, air assault and combat search and rescue (finding and recovering downed aircrew). Estimates of their strength range from about 1,000 to 1,500. Garud personnel are enlisted as airmen, which gives the Air Force its own route into the force.
+
+![Garud commandos](/images/garud-group.png)
+
+*Garud commandos.*
 
 ## How do they work together? AFSOD
 
@@ -76,6 +99,14 @@ You can think of AFSOD as India's step towards a single Special Operations Comma
 | NSG (National Security Guard) | Ministry of Home Affairs | Counter-terror and hostage rescue. Not part of the armed forces, although many officers come from the Army on deputation |
 | Special Frontier Force | Reportedly the Cabinet Secretariat | A long-standing force. Very little is public |
 | Ghatak platoons | Army infantry battalions | Specially trained commando platoons inside regular battalions |
+
+![NSG emblem](/images/nsg-insignia.png)
+
+*The NSG emblem.*
+
+![NSG commandos](/images/nsg-group.png)
+
+*NSG commandos.*
 
 ## The newest layer: Bhairav light commando battalions
 
