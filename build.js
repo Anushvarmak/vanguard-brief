@@ -51,7 +51,7 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${img}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/style.css">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
+<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
 <main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
@@ -75,9 +75,51 @@ for(const p of posts){
 const tags=[...new Set(posts.flatMap(p=>p.tags))];
 for(const t of tags)out(`tags/${slug(t)}/index.html`,page({title:`#${t}`,desc:`Posts tagged ${t} on ${cfg.name}`,path:`/tags/${slug(t)}/`,image:cfg.defaultImage,
   body:`<h1>#${esc(t)}</h1>${posts.filter(p=>p.tags.includes(t)).map(card).join('')}`}));
+const authorImg = cfg.authorImage || '/images/default.png';
+out('author/index.html', page({
+  title: `About the Author — ${cfg.author}`,
+  desc: `Meet ${cfg.author}, civilian writer, IT support engineer and founder of Vanguard Brief.`,
+  path: '/author/',
+  image: authorImg,
+  body: `<article>
+<div class="card" style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin:1rem 0">
+  <img src="${authorImg}" alt="${esc(cfg.author)}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--acc);margin:0;flex-shrink:0">
+  <div>
+    <h1 style="margin:0 0 .3rem;font-size:1.8rem">${esc(cfg.author)}</h1>
+    <p style="color:var(--mute);margin:0 0 .8rem">Civilian Writer &amp; IT Support Engineer · Founder of Vanguard Brief</p>
+    <div class="share" style="margin:0">
+      ${cfg.email ? `<a href="mailto:${esc(cfg.email)}">✉ Email</a>` : ''}
+      ${cfg.linkedin ? `<a href="${esc(cfg.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ''}
+    </div>
+  </div>
+</div>
+<h2>A Note from the Author</h2>
+<p>Welcome to <strong>Vanguard Brief</strong>. I started this publication because defence and military topics are often overshadowed by heavy jargon, unverified rumors, and dramatic headlines. Many curious citizens, students, defence aspirants, and parents want to genuinely understand how our armed forces function, how modern defence tech works, and what military careers look like — without having to decode military acronyms or sift through sensationalism.</p>
+<p>By day, I work as an IT support engineer. My fascination with the armed forces, defence systems, and global security is deeply personal. I am not affiliated with the government, any defence contractor, or military branch. This blog is my independent space to study, digest, and explain defence topics in plain, accessible language.</p>
+<h2>Strict Editorial Standards</h2>
+<ul>
+  <li><strong>100% Open-Source Intelligence (OSINT):</strong> Every post relies exclusively on publicly verifiable information — official Ministry of Defence releases, PIB announcements, parliamentary committee reports, think-tank papers, and credible journalism.</li>
+  <li><strong>Zero Classified or Operational Data:</strong> I do not publish confidential information, tactical positions, troop deployments, or sensitive operational details.</li>
+  <li><strong>Calm, Objective &amp; Neutral:</strong> No hyperbole, no political bias, and no cheerleading. Facts are stated plainly, and disputed numbers are clearly identified as estimates.</li>
+  <li><strong>Accountability:</strong> Sources are always credited, and factual corrections from readers are actively welcomed.</li>
+</ul>
+<h2>Topics Covered</h2>
+<div class="tbl"><table>
+  <tr><th>Focus Area</th><th>What is covered</th></tr>
+  <tr><td><strong>Indian Armed Forces</strong></td><td>Structure, commands, regiments, and operations of the Army, Navy, and Air Force.</td></tr>
+  <tr><td><strong>Defence Technology</strong></td><td>Fighter jets, warships, submarines, missiles, drones, and air-defence systems explained simply.</td></tr>
+  <tr><td><strong>Military Careers</strong></td><td>Selection procedures, academies (NDA, CDS, AFCAT), training, and special forces volunteering.</td></tr>
+  <tr><td><strong>Global Defence &amp; Analysis</strong></td><td>Comparative analysis of international armed forces and strategic alliances (Quad, NATO).</td></tr>
+</table></div>
+<h2>Get in Touch &amp; Suggest Topics</h2>
+<p>I follow a regular 2-week publishing schedule. If there is a defence system, battle history, or unit you want explained in simple words, or if you spot an error that needs correction, feel free to reach out:</p>
+<p>✉ <strong>Email:</strong> <a href="mailto:${esc(cfg.email || '')}">${esc(cfg.email || '')}</a><br>
+💼 <strong>LinkedIn:</strong> <a href="${esc(cfg.linkedin || '')}" target="_blank" rel="noopener">${esc(cfg.author)} on LinkedIn</a></p>
+</article>`
+}));
 out('404.html',page({title:'Page not found',desc:'Not found',path:'/404.html',image:cfg.defaultImage,body:'<h1>Page not found</h1><p><a href="/">Back to home</a></p>'}));
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
-  ['/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
+  ['/','/author/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
 out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
 console.log(`Built ${posts.length} post(s) into dist/`);
 if(DEV)http.createServer((q,r)=>{let f=path.join('dist',decodeURIComponent(q.url.split('?')[0]));

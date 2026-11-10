@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#252f22"/>
+      <stop offset="100%" stop-color="#10140f"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#bg)" stroke="#b9a44c" stroke-width="4"/>
+  <text x="100" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="800" fill="#e7e9df" letter-spacing="2" text-anchor="middle">AVK</text>
+  <circle cx="100" cy="148" r="4" fill="#b9a44c"/>
+</svg>
