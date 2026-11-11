@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dark background circle -->
+  <circle cx="32" cy="32" r="32" fill="#0d1117"/>
+  <!-- Shield body -->
+  <path d="M32 8 L52 18 L52 36 Q52 50 32 58 Q12 50 12 36 L12 18 Z"
+        fill="#1a2332" stroke="#c9a84c" stroke-width="2.5"/>
+  <!-- Shield inner border -->
+  <path d="M32 13 L47 21 L47 36 Q47 47 32 54 Q17 47 17 36 L17 21 Z"
+        fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+  <!-- Letter V for Vanguard -->
+  <text x="32" y="40"
+        font-family="Georgia, serif"
+        font-size="22"
+        font-weight="bold"
+        fill="#c9a84c"
+        text-anchor="middle"
+        dominant-baseline="middle">V</text>
+  <!-- Top star accent -->
+  <polygon points="32,10 33.2,13.5 37,13.5 34,15.7 35.1,19.2 32,17 28.9,19.2 30,15.7 27,13.5 30.8,13.5"
+           fill="#c9a84c" opacity="0.9"/>
+</svg>

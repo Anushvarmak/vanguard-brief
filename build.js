@@ -58,7 +58,9 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <meta property="og:site_name" content="${esc(cfg.name)}"><meta property="og:type" content="${type}"><meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${img}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/style.css">${ld}</head><body>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">${ld}</head><body>
 <header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a>${DEV?`<a href="/scheduler/" style="color:var(--acc)">⚙️ Scheduler</a>`:''}${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
 <main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
