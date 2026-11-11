@@ -1,7 +1,7 @@
 ---
 title: Military Ranks Compared: India, the United States and the United Kingdom
 description: How military ranks work across the Army, Navy and Air Force in India, the US and the UK. A clear side-by-side comparison explaining NATO codes, JCOs and confusing titles.
-date: 2026-11-20
+date: 2026-11-11
 image: /images/military-ranks-structure.svg
 tags: Global, India, Military Ranks, Defence Careers, Indian Armed Forces, US Military, British Armed Forces
 ---
@@ -35,6 +35,10 @@ Before comparing country by country, it helps to understand how military personn
 ## Army Ranks Compared
 
 Army structures across India, the US, and the UK are closely aligned because the modern Indian Army inherited its historical hierarchy from the British system, while the US Continental Army adapted European officer ranks during the American Revolution.
+
+![Official officer rank insignia of the Indian Army, Air Force and Navy](/images/ranks-tri-service-insignia.jpg)
+
+*Officer rank insignia across the three Indian armed services, showing shoulder boards and sleeve braids from General/Admiral/Air Chief Marshal down to Lieutenant/Sub Lieutenant/Flying Officer.*
 
 | Grade (NATO Code) | Indian Army | British Army | US Army | Typical Role |
 |---|---|---|---|---|
@@ -78,6 +82,10 @@ Naval ranks are rooted in maritime traditions dating back centuries. This is whe
 
 One of the most common confusions in all of military terminology is the word **Captain**:
 
+![Naval Captain four gold rings sleeve cuff on uniform](/images/ranks-navy-captain-rings.jpg)
+
+*The four gold rings and executive curl on a Naval Captain's cuff — equivalent in authority and seniority to a full Colonel in the Army.*
+
 - In the **Army** and **Air Force**, a Captain is an OF-2 rank. They are typically in their late 20s and command a company of roughly 100 soldiers.
 - In the **Navy**, a Captain is an OF-5 rank. They are senior officers with 20+ years of service, wear four thick gold cuff rings, and command major warships like guided-missile destroyers or aircraft carriers.
 - **A Naval Captain is equivalent to an Army Colonel**, not an Army Captain!
@@ -108,6 +116,10 @@ When the British Royal Air Force (RAF) was created in 1918 as the world's first 
 
 In the IAF and RAF, ranks sound like operational unit appointments, but they are formal ranks:
 
+![Indian Air Force Group Captain rank braid](/images/ranks-iaf-group-captain.jpg)
+
+*An Indian Air Force Group Captain's sleeve braid (four light-blue stripes bordered in dark navy), equivalent to an Army Colonel or Naval Captain.*
+
 - A **Squadron Leader** (OF-3) is a personal rank equivalent to an Army Major. In practice, a flying squadron is usually commanded by a **Wing Commander** (OF-4) in the IAF.
 - An air base or air station is usually commanded by an **Air Commodore** (OF-6) or a senior **Group Captain** (OF-5).
 - India has had one five-star air officer in its history: **Marshal of the Indian Air Force Arjan Singh**, honored in 2002 for his leadership during the 1965 war.
@@ -121,6 +133,10 @@ Beyond commissioned officers, the enlisted hierarchy manages the daily execution
 ### India's Junior Commissioned Officers (JCOs)
 
 The JCO cadre is an essential pillars of the Indian Armed Forces. They are seasoned leaders with 15–30 years of field experience who command platoons, oversee logistics, and maintain unit traditions:
+
+![Indian Army Subedar Major rank shoulder badge with red and gold ribbon](/images/ranks-subedar-major-jco.jpg)
+
+*A Subedar Major's shoulder insignia: the golden Ashoka Lion Capital placed over the distinctive red-and-gold regimental ribbon stripe.*
 
 | Service | Top JCO Rank | Middle JCO Rank | Junior JCO Rank |
 |---|---|---|---|
