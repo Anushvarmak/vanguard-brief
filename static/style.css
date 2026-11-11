@@ -14,3 +14,7 @@ footer{color:var(--mute);font-size:.85rem;border-top:1px solid var(--line);margi
 th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top}th{background:var(--card);color:var(--acc)}
 details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.6rem 1rem;margin:.6rem 0}summary{cursor:pointer;font-weight:600}
 h2{margin-top:2rem}article img{display:block;margin:1rem auto}
+.search-box{margin:1.5rem 0}
+.search-box input{width:100%;padding:.75rem 1rem;background:var(--card);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;font-size:.95rem;outline:none;transition:border-color .2s}
+.search-box input:focus{border-color:var(--acc)}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.75rem;font-weight:700;vertical-align:middle}

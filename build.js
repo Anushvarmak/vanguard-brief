@@ -32,15 +32,23 @@ function md(src){
   }
   flush();end();endTbl();return out.join('\n');
 }
-const posts=fs.readdirSync('posts').filter(f=>f.endsWith('.md')).map(f=>{
+const today=new Date().toISOString().slice(0,10);
+const allPosts=fs.readdirSync('posts').filter(f=>f.endsWith('.md')).map(f=>{
   const raw=fs.readFileSync('posts/'+f,'utf8').replace(/\r\n/g,'\n');
   const m=raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if(!m)throw new Error(f+': missing front matter (--- block at top)');
   const meta={};m[1].split('\n').forEach(l=>{const i=l.indexOf(':');if(i>0)meta[l.slice(0,i).trim()]=l.slice(i+1).trim();});
-  return{slug:f.replace(/^\d{4}-\d{2}-\d{2}-/,'').replace(/\.md$/,''),title:meta.title||f,desc:meta.description||'',date:meta.date||f.slice(0,10),
-    own:!!meta.image,image:meta.image||cfg.defaultImage,draft:meta.draft==='true',
+  const date=meta.date||f.slice(0,10);
+  const isScheduled=date>today;
+  const isDraft=meta.draft==='true';
+  return{file:f,slug:f.replace(/^\d{4}-\d{2}-\d{2}-/,'').replace(/\.md$/,''),title:meta.title||f,desc:meta.description||'',date,
+    own:!!meta.image,image:meta.image||cfg.defaultImage,draft:isDraft,scheduled:isScheduled,
     tags:(meta.tags||'').split(',').map(s=>s.trim()).filter(Boolean),html:md(m[2]),mins:Math.max(1,Math.round(m[2].split(/\s+/).length/200))};
-}).filter(p=>!p.draft).sort((a,b)=>b.date.localeCompare(a.date));
+}).sort((a,b)=>b.date.localeCompare(a.date));
+
+// In production, only show published live posts (not draft, and date <= today)
+// In local DEV mode, show scheduled posts with badge so author can preview!
+const posts=allPosts.filter(p=>!p.draft&&(!p.scheduled||DEV));
 
 function page({title,desc,path:p,image,type='website',body,ld=''}){
   const url=abs(p),img=image.startsWith('http')?image:abs(image);
@@ -51,19 +59,35 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${img}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/style.css">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
+<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a>${DEV?`<a href="/scheduler/" style="color:var(--acc)">⚙️ Scheduler</a>`:''}${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
 <main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
 }
 const tagLinks=p=>p.tags.map(t=>`<a href="/tags/${slug(t)}/">#${esc(t.replace(/\s+/g,''))}</a>`).join('');
-const card=p=>`<div class="card">${p.own?`<img src="${p.image}" alt="" loading="lazy">`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a></h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
+const card=p=>`<div class="card">${p.own?`<img src="${p.image}" alt="" loading="lazy">`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a>${p.scheduled?` <span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled: ${fmt(p.date)}</span>`:''}</h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
 const out=(p,c)=>{const f=path.join('dist',p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,c);};
 
 fs.rmSync('dist',{recursive:true,force:true});
 if(fs.existsSync('static'))fs.cpSync('static','dist',{recursive:true});
 out('index.html',page({title:cfg.name,desc:cfg.tagline,path:'/',image:cfg.defaultImage,
-  body:`<div class="hero"><h1>${esc(cfg.name)}</h1><p>${esc(cfg.tagline)}</p></div>${posts.map(card).join('')}`}));
+  body:`<div class="hero"><h1>${esc(cfg.name)}</h1><p>${esc(cfg.tagline)}</p><div class="search-box"><input type="search" id="q" placeholder="🔍 Search articles, tags, or topics (e.g. Special Forces, Navy, Ranks)..." autocomplete="off"></div></div><div id="posts-list">${posts.map(card).join('')}</div><div id="no-res" style="display:none;color:var(--mute);text-align:center;padding:2.5rem 0;font-size:1.05rem">No articles found matching your search.</div><script>
+const q=document.getElementById('q');
+const cards=document.querySelectorAll('#posts-list .card');
+const noRes=document.getElementById('no-res');
+if(q){
+  q.addEventListener('input',()=>{
+    const v=q.value.toLowerCase().trim();
+    let shown=0;
+    cards.forEach(c=>{
+      const match=!v||c.innerText.toLowerCase().includes(v);
+      c.style.display=match?'':'none';
+      if(match)shown++;
+    });
+    if(noRes)noRes.style.display=(shown===0&&v)?'block':'none';
+  });
+}
+</script>`}));
 for(const p of posts){
   const u=abs(`/posts/${p.slug}/`),q=encodeURIComponent;
   const g=cfg.giscus&&cfg.giscus.repoId?`<script src="https://giscus.app/client.js" data-repo="${cfg.giscus.repo}" data-repo-id="${cfg.giscus.repoId}" data-category="${cfg.giscus.category}" data-category-id="${cfg.giscus.categoryId}" data-mapping="pathname" data-theme="dark" crossorigin="anonymous" async></script>`:'';
@@ -118,6 +142,69 @@ out('author/index.html', page({
 <p>✉ <strong>Email:</strong> <a href="mailto:${esc(cfg.email || '')}">${esc(cfg.email || '')}</a><br>
 💼 <strong>LinkedIn:</strong> <a href="${esc(cfg.linkedin || '')}" target="_blank" rel="noopener">${esc(cfg.author)} on LinkedIn</a></p>
 </article>`
+}));
+const pin=cfg.schedulerPin||'1947';
+out('scheduler/index.html',page({
+  title:'Post Scheduler (Author Only)',
+  desc:'Private editorial scheduler for Vanguard Brief.',
+  path:'/scheduler/',
+  image:cfg.defaultImage,
+  body:`
+  <div id="auth-lock" style="${DEV?'display:none':''}">
+    <div class="card" style="text-align:center;max-width:420px;margin:3rem auto;padding:2rem">
+      <h2 style="margin-top:0">🔒 Author Access Only</h2>
+      <p style="color:var(--mute);font-size:.9rem">This publishing scheduler is private. Enter your author PIN to view.</p>
+      <input type="password" id="pin-input" placeholder="Enter PIN" style="width:100%;padding:.75rem;margin:1rem 0;background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:1.1rem;text-align:center;outline:none">
+      <button onclick="checkPin()" style="width:100%;padding:.75rem;background:var(--acc);color:#10140f;font-weight:700;font-size:1rem;border:none;border-radius:6px;cursor:pointer">Unlock Scheduler</button>
+      <p id="pin-err" style="color:#e53e3e;font-size:.85rem;display:none;margin-top:.8rem">Incorrect PIN. Please try again.</p>
+    </div>
+  </div>
+  <div id="scheduler-content" style="${DEV?'':'display:none'}">
+    <article>
+      <h1>⚙️ Post Publishing Scheduler</h1>
+      <p style="color:var(--mute)">Private author dashboard. Control and review when your posts go live to the public.</p>
+      <div class="card" style="border:1px solid var(--acc);background:#181e16;margin:1.5rem 0">
+        <h3 style="margin:0 0 .5rem;color:var(--acc)">How Post Scheduling Works</h3>
+        <p style="margin:0;font-size:.92rem;line-height:1.6">
+          • <strong>To schedule a post:</strong> Set <code>date: YYYY-MM-DD</code> in the top frontmatter of any post in <code>posts/</code>.<br>
+          • <strong>Automated Protection:</strong> Any post with a future date is <em>completely hidden</em> from regular visitors until that date arrives.<br>
+          • <strong>Automatic Daily Release:</strong> GitHub Actions runs every midnight UTC to publish posts as soon as their target date is reached.<br>
+          • <strong>Drafts:</strong> Set <code>draft: true</code> to keep a post completely unpublished regardless of date.
+        </p>
+      </div>
+      <h2>All Posts (${allPosts.length})</h2>
+      <div class="tbl"><table>
+        <tr><th>Status</th><th>Post Title</th><th>Target Date</th><th>Read Time</th><th>Preview Link</th></tr>
+        ${allPosts.map(p=>{
+          const daysLeft=Math.ceil((new Date(p.date)-new Date(today))/(1000*60*60*24));
+          let badgeHtml='';
+          if(p.draft){badgeHtml='<span class="badge" style="background:#333;color:#bbb">Draft</span>';}
+          else if(p.scheduled){badgeHtml=`<span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled (${daysLeft}d left)</span>`;}
+          else{badgeHtml='<span class="badge" style="background:#1c3d23;color:#68d391">Live</span>';}
+          return `<tr><td>${badgeHtml}</td><td><strong>${esc(p.title)}</strong><br><small style="color:var(--mute)">posts/${esc(p.file)}</small></td><td><code>${p.date}</code></td><td>${p.mins} min</td><td><a href="/posts/${p.slug}/">Preview Post →</a></td></tr>`;
+        }).join('')}
+      </table></div>
+    </article>
+  </div>
+  <script>
+  function checkPin(){
+    const val=document.getElementById('pin-input').value;
+    if(val==='${pin}'){
+      document.getElementById('auth-lock').style.display='none';
+      document.getElementById('scheduler-content').style.display='block';
+      sessionStorage.setItem('vg_auth','1');
+    }else{
+      document.getElementById('pin-err').style.display='block';
+    }
+  }
+  document.getElementById('pin-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
+  if(sessionStorage.getItem('vg_auth')==='1'){
+    const lock=document.getElementById('auth-lock');
+    const content=document.getElementById('scheduler-content');
+    if(lock)lock.style.display='none';
+    if(content)content.style.display='block';
+  }
+  </script>`
 }));
 out('404.html',page({title:'Page not found',desc:'Not found',path:'/404.html',image:cfg.defaultImage,body:'<h1>Page not found</h1><p><a href="/">Back to home</a></p>'}));
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+

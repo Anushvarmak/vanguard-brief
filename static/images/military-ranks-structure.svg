@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-label="Military rank structure comparison chart showing Commissioned Officers, Indian JCOs, and Enlisted ranks across Army, Navy, and Air Force">
+  <rect width="720" height="480" rx="12" fill="#181e16" stroke="#2a3326"/>
+  <g font-family="system-ui, -apple-system, Segoe UI, sans-serif" fill="#e7e9df">
+    <!-- Header -->
+    <text x="360" y="32" font-size="18" font-weight="700" fill="#b9a44c" text-anchor="middle">Military Rank Structure: Three Services at a Glance</text>
+    <text x="360" y="52" font-size="12" fill="#9aa38d" text-anchor="middle">Standard hierarchy used across India, UK and allied structures</text>
+
+    <!-- Branch Column Headers -->
+    <rect x="25" y="68" width="210" height="30" rx="6" fill="#252f22" stroke="#b9a44c"/>
+    <text x="130" y="88" font-size="13" font-weight="700" fill="#b9a44c" text-anchor="middle">ARMY (Land)</text>
+
+    <rect x="255" y="68" width="210" height="30" rx="6" fill="#1a2730" stroke="#5b92b6"/>
+    <text x="360" y="88" font-size="13" font-weight="700" fill="#7ab3d6" text-anchor="middle">NAVY (Maritime)</text>
+
+    <rect x="485" y="68" width="210" height="30" rx="6" fill="#252b36" stroke="#8fa0b5"/>
+    <text x="590" y="88" font-size="13" font-weight="700" fill="#b4c7dc" text-anchor="middle">AIR FORCE (Air)</text>
+
+    <!-- Tier 1: General & Flag Officers (OF-6 to OF-9) -->
+    <g transform="translate(0, 108)">
+      <rect x="25" y="0" width="670" height="88" rx="8" fill="#10140f" stroke="#2a3326"/>
+      <rect x="25" y="0" width="670" height="22" rx="6" fill="#2a3326"/>
+      <text x="360" y="16" font-size="11" font-weight="700" fill="#b9a44c" text-anchor="middle">GENERAL &amp; FLAG OFFICERS (4-Star to 1-Star · Command &amp; Strategic Direction)</text>
+
+      <text x="35" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">General</tspan> (COAS / CDS)</text>
+      <text x="35" y="54" font-size="11" fill="#9aa38d">Lieutenant General (Corps)</text>
+      <text x="35" y="70" font-size="11" fill="#9aa38d">Major General · Brigadier</text>
+
+      <text x="265" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Admiral</tspan> (CNS / CDS)</text>
+      <text x="265" y="54" font-size="11" fill="#9aa38d">Vice Admiral (Fleet)</text>
+      <text x="265" y="70" font-size="11" fill="#9aa38d">Rear Admiral · Commodore</text>
+
+      <text x="495" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Air Chief Marshal</tspan> (CAS / CDS)</text>
+      <text x="495" y="54" font-size="11" fill="#9aa38d">Air Marshal (Air Command)</text>
+      <text x="495" y="70" font-size="11" fill="#9aa38d">Air Vice Marshal · Air Commodore</text>
+    </g>
+
+    <!-- Tier 2: Field & Company Officers (OF-1 to OF-5) -->
+    <g transform="translate(0, 206)">
+      <rect x="25" y="0" width="670" height="96" rx="8" fill="#10140f" stroke="#2a3326"/>
+      <rect x="25" y="0" width="670" height="22" rx="6" fill="#2a3326"/>
+      <text x="360" y="16" font-size="11" font-weight="700" fill="#b9a44c" text-anchor="middle">SENIOR &amp; JUNIOR OFFICERS (Unit Command, Tactics &amp; Operations)</text>
+
+      <text x="35" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Colonel</tspan> (Battalion CO)</text>
+      <text x="35" y="54" font-size="11" fill="#9aa38d">Lieutenant Colonel · Major</text>
+      <text x="35" y="70" font-size="11" fill="#9aa38d">Captain (Company Cmdr)</text>
+      <text x="35" y="86" font-size="11" fill="#9aa38d">Lieutenant (Platoon)</text>
+
+      <text x="265" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Captain</tspan> (Warship CO · = Colonel)</text>
+      <text x="265" y="54" font-size="11" fill="#9aa38d">Commander · Lt Commander</text>
+      <text x="265" y="70" font-size="11" fill="#9aa38d">Lieutenant (Senior Watch)</text>
+      <text x="265" y="86" font-size="11" fill="#9aa38d">Sub Lieutenant (Watch Officer)</text>
+
+      <text x="495" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Group Captain</tspan> (= Colonel)</text>
+      <text x="495" y="54" font-size="11" fill="#9aa38d">Wing Commander (Squadron CO)</text>
+      <text x="495" y="70" font-size="11" fill="#9aa38d">Squadron Leader · Flight Lt</text>
+      <text x="495" y="86" font-size="11" fill="#9aa38d">Flying Officer (Pilot/Officer)</text>
+    </g>
+
+    <!-- Tier 3: JCOs (India Unique Tier) -->
+    <g transform="translate(0, 312)">
+      <rect x="25" y="0" width="670" height="74" rx="8" fill="#131912" stroke="#b9a44c" stroke-dasharray="4 3"/>
+      <rect x="25" y="0" width="670" height="22" rx="6" fill="#242c20"/>
+      <text x="360" y="16" font-size="11" font-weight="700" fill="#b9a44c" text-anchor="middle">JUNIOR COMMISSIONED OFFICERS (JCOs · Unique to Indian Forces · Gazetted Rank)</text>
+
+      <text x="35" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Subedar Major</tspan> / Risaldar Maj</text>
+      <text x="35" y="54" font-size="11" fill="#9aa38d">Subedar · Naib Subedar</text>
+
+      <text x="265" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Master Chief Petty Officer I</tspan></text>
+      <text x="265" y="54" font-size="11" fill="#9aa38d">MCPO II · Chief Petty Officer</text>
+
+      <text x="495" y="38" font-size="11" fill="#e7e9df"><tspan font-weight="700">Master Warrant Officer</tspan></text>
+      <text x="495" y="54" font-size="11" fill="#9aa38d">Warrant Officer · Jr Warrant Officer</text>
+    </g>
+
+    <!-- Tier 4: Other Ranks / NCOs -->
+    <g transform="translate(0, 396)">
+      <rect x="25" y="0" width="670" height="66" rx="8" fill="#10140f" stroke="#2a3326"/>
+      <rect x="25" y="0" width="670" height="22" rx="6" fill="#2a3326"/>
+      <text x="360" y="16" font-size="11" font-weight="700" fill="#9aa38d" text-anchor="middle">NON-COMMISSIONED OFFICERS &amp; SOLDIERS (NCOs &amp; Other Ranks)</text>
+
+      <text x="35" y="38" font-size="11" fill="#e7e9df">Havildar · Naik · Lance Naik</text>
+      <text x="35" y="54" font-size="11" fill="#9aa38d">Sepoy / Jawan</text>
+
+      <text x="265" y="38" font-size="11" fill="#e7e9df">Petty Officer · Leading Seaman</text>
+      <text x="265" y="54" font-size="11" fill="#9aa38d">Seaman I &amp; II</text>
+
+      <text x="495" y="38" font-size="11" fill="#e7e9df">Sergeant · Corporal</text>
+      <text x="495" y="54" font-size="11" fill="#9aa38d">Leading Aircraftman · Aircraftman</text>
+    </g>
+  </g>
+</svg>
