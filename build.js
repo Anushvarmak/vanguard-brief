@@ -90,12 +90,13 @@ if(q){
   });
 }
 </script>`}));
-for(const p of posts){
+for(const p of allPosts.filter(p=>!p.draft)){
   const u=abs(`/posts/${p.slug}/`),q=encodeURIComponent;
   const g=cfg.giscus&&cfg.giscus.repoId?`<script src="https://giscus.app/client.js" data-repo="${cfg.giscus.repo}" data-repo-id="${cfg.giscus.repoId}" data-category="${cfg.giscus.category}" data-category-id="${cfg.giscus.categoryId}" data-mapping="pathname" data-theme="dark" crossorigin="anonymous" async></script>`:'';
   const ld=`<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'BlogPosting',headline:p.title,description:p.desc,datePublished:p.date,author:{'@type':'Person',name:cfg.author},image:abs(p.image),mainEntityOfPage:u})}</script>`;
+  const schedNotice=p.scheduled?`<div style="background:#2a2310;border:1px solid #b9a44c;color:#f0c642;padding:0.75rem 1rem;border-radius:6px;margin:1rem 0 1.5rem">📅 <strong>Author Preview:</strong> This post is scheduled to publish on <strong>${fmt(p.date)}</strong>. It is not indexed or listed on the public homepage yet.</div>`:'';
   out(`posts/${p.slug}/index.html`,page({title:p.title,desc:p.desc,path:`/posts/${p.slug}/`,image:p.image,type:'article',ld,
-    body:`<article><h1>${esc(p.title)}</h1><small>${esc(cfg.author)} · ${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div>${p.own?`<p><img src="${p.image}" alt="${esc(p.title)}"></p>`:''}${p.html}
+    body:`<article>${schedNotice}<h1>${esc(p.title)}</h1><small>${esc(cfg.author)} · ${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div>${p.own?`<p><img src="${p.image}" alt="${esc(p.title)}"></p>`:''}${p.html}
 <div class="share"><strong>Share:</strong> <a href="https://www.linkedin.com/sharing/share-offsite/?url=${q(u)}">LinkedIn</a><a href="https://wa.me/?text=${q(p.title+' '+u)}">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=${q(p.title)}&url=${q(u)}">X</a></div>${g}</article>`}));
 }
 const tags=[...new Set(posts.flatMap(p=>p.tags))];
