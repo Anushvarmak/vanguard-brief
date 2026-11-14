@@ -61,7 +61,7 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a>${DEV?`<a href="/scheduler/" style="color:var(--acc)">⚙️ Scheduler</a>`:''}${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
+<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a><a href="/scheduler/" style="color:var(--acc)">⚙️ Scheduler</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
 <main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
