@@ -33,6 +33,7 @@ function md(src){
   flush();end();endTbl();return out.join('\n');
 }
 const today=new Date().toISOString().slice(0,10);
+const pin=cfg.schedulerPin||'1921';
 const allPosts=fs.readdirSync('posts').filter(f=>f.endsWith('.md')).map(f=>{
   const raw=fs.readFileSync('posts/'+f,'utf8').replace(/\r\n/g,'\n');
   const m=raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -61,9 +62,39 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a><a href="/scheduler/" style="color:var(--acc)">⚙️ Scheduler</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
+<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a><a id="sched-link" href="/scheduler/" style="display:none;color:var(--acc)">⚙️ Scheduler</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
 <main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    if(q.get('author')==='${pin}'){
+      localStorage.setItem('vg_auth','1');
+      history.replaceState(null,'',location.pathname);
+    }
+    if(localStorage.getItem('vg_auth')==='1'){
+      var s=document.getElementById('sched-link');
+      if(s)s.style.display='inline-block';
+    }
+  }catch(e){}
+  var l=document.querySelector('.logo');
+  if(l){
+    l.addEventListener('dblclick',function(e){
+      e.preventDefault();
+      var p=prompt('Author Access — Enter PIN:');
+      if(p==='${pin}'){
+        localStorage.setItem('vg_auth','1');
+        var s=document.getElementById('sched-link');
+        if(s)s.style.display='inline-block';
+        alert('Author Mode enabled! Scheduler is now visible in your navigation.');
+      }else if(p!==null){
+        alert('Incorrect PIN.');
+      }
+    });
+  }
+})();
+</script>
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
 }
 const tagLinks=p=>p.tags.map(t=>`<a href="/tags/${slug(t)}/">#${esc(t.replace(/\s+/g,''))}</a>`).join('');
@@ -146,7 +177,6 @@ out('author/index.html', page({
 💼 <strong>LinkedIn:</strong> <a href="${esc(cfg.linkedin || '')}" target="_blank" rel="noopener">${esc(cfg.author)} on LinkedIn</a></p>
 </article>`
 }));
-const pin=cfg.schedulerPin||'1947';
 out('scheduler/index.html',page({
   title:'Post Scheduler (Author Only)',
   desc:'Private editorial scheduler for Vanguard Brief.',
@@ -164,7 +194,10 @@ out('scheduler/index.html',page({
   </div>
   <div id="scheduler-content" style="${DEV?'':'display:none'}">
     <article>
-      <h1>⚙️ Post Publishing Scheduler</h1>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">
+        <h1 style="margin:0">⚙️ Post Publishing Scheduler</h1>
+        <button onclick="logoutAuthor()" style="background:transparent;border:1px solid var(--line);color:var(--mute);padding:.4rem .85rem;border-radius:6px;cursor:pointer;font-size:.85rem">🔒 Log Out / Hide</button>
+      </div>
       <p style="color:var(--mute)">Private author dashboard. Control and review when your posts go live to the public.</p>
       <div class="card" style="border:1px solid var(--acc);background:#181e16;margin:1.5rem 0">
         <h3 style="margin:0 0 .5rem;color:var(--acc)">How Post Scheduling Works</h3>
@@ -195,13 +228,19 @@ out('scheduler/index.html',page({
     if(val==='${pin}'){
       document.getElementById('auth-lock').style.display='none';
       document.getElementById('scheduler-content').style.display='block';
-      sessionStorage.setItem('vg_auth','1');
+      localStorage.setItem('vg_auth','1');
+      var s=document.getElementById('sched-link');
+      if(s)s.style.display='inline-block';
     }else{
       document.getElementById('pin-err').style.display='block';
     }
   }
+  function logoutAuthor(){
+    localStorage.removeItem('vg_auth');
+    location.href='/';
+  }
   document.getElementById('pin-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
-  if(sessionStorage.getItem('vg_auth')==='1'){
+  if(localStorage.getItem('vg_auth')==='1'){
     const lock=document.getElementById('auth-lock');
     const content=document.getElementById('scheduler-content');
     if(lock)lock.style.display='none';
