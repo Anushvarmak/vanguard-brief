@@ -2,7 +2,7 @@
 title: Welcome to Vanguard Brief
 description: What this blog covers, who it is for, and how every post is written.
 date: 2026-11-10
-tags: Introduction, Defence, India, Global
+tags: Introduction, Defence, Military, Aviation, India, Global
 ---
 Defence, technology and careers, explained in simple language. Here is what you will find on this blog and how it is written.
 

@@ -98,28 +98,64 @@ ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcoun
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
 }
 const tagLinks=p=>p.tags.map(t=>`<a href="/tags/${slug(t)}/">#${esc(t.replace(/\s+/g,''))}</a>`).join('');
-const card=p=>`<div class="card">${p.own?`<img src="${p.image}" alt="" loading="lazy">`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a>${p.scheduled?` <span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled: ${fmt(p.date)}</span>`:''}</h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
+const card=p=>`<div class="card" data-tags="${esc(p.tags.join(',').toLowerCase())}">${p.own?`<img src="${p.image}" alt="" loading="lazy">`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a>${p.scheduled?` <span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled: ${fmt(p.date)}</span>`:''}</h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
 const out=(p,c)=>{const f=path.join('dist',p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,c);};
 
 fs.rmSync('dist',{recursive:true,force:true});
 if(fs.existsSync('static'))fs.cpSync('static','dist',{recursive:true});
 out('index.html',page({title:cfg.name,desc:cfg.tagline,path:'/',image:cfg.defaultImage,
-  body:`<div class="hero"><h1>${esc(cfg.name)}</h1><p>${esc(cfg.tagline)}</p><div class="search-box"><input type="search" id="q" placeholder="🔍 Search articles, tags, or topics (e.g. Special Forces, Navy, Ranks)..." autocomplete="off"></div></div><div id="posts-list">${posts.map(card).join('')}</div><div id="no-res" style="display:none;color:var(--mute);text-align:center;padding:2.5rem 0;font-size:1.05rem">No articles found matching your search.</div><script>
+  body:`<div class="hero"><h1>${esc(cfg.name)}</h1><p>${esc(cfg.tagline)}</p>
+<div class="search-box"><input type="search" id="q" placeholder="🔍 Search articles, tags, or topics (e.g. Special Forces, Navy, Aviation, Ranks)..." autocomplete="off"></div>
+<div class="topic-filters">
+  <button class="topic-btn active" data-filter="all">All Topics</button>
+  <button class="topic-btn" data-filter="military">⚔️ Military &amp; Defence</button>
+  <button class="topic-btn" data-filter="aviation">✈️ Aviation &amp; Aerospace</button>
+  <button class="topic-btn" data-filter="india">🇮🇳 Indian Armed Forces</button>
+  <button class="topic-btn" data-filter="global">🌐 Global Defence</button>
+  <button class="topic-btn" data-filter="careers">🎯 Defence Careers</button>
+</div>
+</div><div id="posts-list">${posts.map(card).join('')}</div><div id="no-res" style="display:none;color:var(--mute);text-align:center;padding:2.5rem 0;font-size:1.05rem">No articles found matching your search.</div><script>
+let curFilter='all';
 const q=document.getElementById('q');
 const cards=document.querySelectorAll('#posts-list .card');
 const noRes=document.getElementById('no-res');
-if(q){
-  q.addEventListener('input',()=>{
-    const v=q.value.toLowerCase().trim();
-    let shown=0;
-    cards.forEach(c=>{
-      const match=!v||c.innerText.toLowerCase().includes(v);
-      c.style.display=match?'':'none';
-      if(match)shown++;
-    });
-    if(noRes)noRes.style.display=(shown===0&&v)?'block':'none';
+const filterBtns=document.querySelectorAll('.topic-btn');
+
+function runFilters(){
+  const query=(q?q.value:'').toLowerCase().trim();
+  let shown=0;
+  cards.forEach(c=>{
+    const text=c.innerText.toLowerCase();
+    const tags=(c.getAttribute('data-tags')||'').toLowerCase();
+    let matchesTopic=true;
+    if(curFilter==='military'){
+      matchesTopic=tags.includes('military')||tags.includes('defence')||tags.includes('special forces')||tags.includes('navy');
+    }else if(curFilter==='aviation'){
+      matchesTopic=tags.includes('aviation')||tags.includes('aerospace')||tags.includes('aircraft')||tags.includes('air force')||tags.includes('garud');
+    }else if(curFilter==='india'){
+      matchesTopic=tags.includes('india')||tags.includes('indian');
+    }else if(curFilter==='global'){
+      matchesTopic=tags.includes('global')||tags.includes('us military')||tags.includes('british');
+    }else if(curFilter==='careers'){
+      matchesTopic=tags.includes('defence careers')||tags.includes('ranks');
+    }
+    const matchesSearch=!query||text.includes(query);
+    const visible=matchesTopic&&matchesSearch;
+    c.style.display=visible?'':'none';
+    if(visible)shown++;
   });
+  if(noRes)noRes.style.display=(shown===0)?'block':'none';
 }
+
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    curFilter=btn.getAttribute('data-filter')||'all';
+    runFilters();
+  });
+});
+if(q)q.addEventListener('input',runFilters);
 </script>`}));
 for(const p of allPosts.filter(p=>!p.draft)){
   const u=abs(`/posts/${p.slug}/`),q=encodeURIComponent;
@@ -217,7 +253,8 @@ out('scheduler/index.html',page({
           if(p.draft){badgeHtml='<span class="badge" style="background:#333;color:#bbb">Draft</span>';}
           else if(p.scheduled){badgeHtml=`<span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled (${daysLeft}d left)</span>`;}
           else{badgeHtml='<span class="badge" style="background:#1c3d23;color:#68d391">Live</span>';}
-          return `<tr><td>${badgeHtml}</td><td><strong>${esc(p.title)}</strong><br><small style="color:var(--mute)">posts/${esc(p.file)}</small></td><td><code>${p.date}</code></td><td>${p.mins} min</td><td><a href="/posts/${p.slug}/">Preview Post →</a></td></tr>`;
+          const tagBadges=p.tags.map(t=>`<span class="badge" style="background:#1a2217;border:1px solid var(--line);color:var(--mute);margin:0.2rem 0.2rem 0 0;font-size:0.7rem">#${esc(t)}</span>`).join('');
+          return `<tr><td>${badgeHtml}</td><td><strong>${esc(p.title)}</strong><br><small style="color:var(--mute)">posts/${esc(p.file)}</small><div style="margin-top:0.35rem">${tagBadges}</div></td><td><code>${p.date}</code></td><td>${p.mins} min</td><td><a href="/posts/${p.slug}/">Preview Post →</a></td></tr>`;
         }).join('')}
       </table></div>
     </article>

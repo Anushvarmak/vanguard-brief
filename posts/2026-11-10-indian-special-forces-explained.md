@@ -2,7 +2,7 @@
 title: Indian Special Forces Explained: Para SF, MARCOS, Garud and the New Bhairav Battalions
 description: Who are India's special forces, what does each one do, how are they linked, and how can you join? A simple step-by-step guide using open sources only.
 date: 2026-11-10
-tags: Special Forces, Para SF, MARCOS, Garud, Indian Armed Forces, Defence Careers
+tags: Military, India, Indian Armed Forces, Special Forces, Aviation, Para SF, MARCOS, Garud, Defence Careers
 ---
 Each of India's three armed services has its own special force, and since 2019 a joint division has linked them. Here is who they are, what each one does, and why they are in the news again.
 

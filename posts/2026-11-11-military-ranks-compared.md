@@ -3,7 +3,7 @@ title: Military Ranks Compared: India, the United States and the United Kingdom
 description: How military ranks work across the Army, Navy and Air Force in India, the US and the UK. A clear side-by-side comparison explaining NATO codes, JCOs and confusing titles.
 date: 2026-11-11
 image: /images/military-ranks-structure.svg
-tags: Global, India, Military Ranks, Defence Careers, Indian Armed Forces, US Military, British Armed Forces
+tags: Military, Aviation, India, Global, Military Ranks, Defence Careers, Indian Armed Forces, US Military, British Armed Forces
 ---
 Why is a Navy Captain four grades higher than an Army Captain? Why does the Indian military have "Junior Commissioned Officers" while Western forces do not? And why does the British Royal Air Force use titles like "Wing Commander" and "Squadron Leader" while the US Air Force uses Army-style ranks?
 

@@ -18,3 +18,7 @@ h2{margin-top:2rem}article img{display:block;margin:1rem auto}
 .search-box input{width:100%;padding:.75rem 1rem;background:var(--card);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;font-size:.95rem;outline:none;transition:border-color .2s}
 .search-box input:focus{border-color:var(--acc)}
 .badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.75rem;font-weight:700;vertical-align:middle}
+.topic-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0 1.5rem}
+.topic-btn{background:var(--card);border:1px solid var(--line);color:var(--mute);padding:.35rem .85rem;border-radius:20px;font:inherit;font-size:.82rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.topic-btn:hover{border-color:var(--acc);color:var(--text)}
+.topic-btn.active{background:var(--acc);color:#10140f;border-color:var(--acc);font-weight:700}

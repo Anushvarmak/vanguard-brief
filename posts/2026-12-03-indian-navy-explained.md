@@ -3,7 +3,7 @@ title: Indian Navy Explained: How the Fleet Is Organised and Its Aircraft Carrie
 description: How is the Indian Navy structured? What ships, submarines and aircraft does it operate? A clear open-source guide covering commands, carriers and what comes next — timed for Navy Day.
 date: 2026-12-03
 image: /images/navy-ins-vikrant.jpg
-tags: India, Indian Navy, Defence, Navy Day, Aircraft Carriers, Defence Careers
+tags: Military, Aviation, India, Indian Navy, Aerospace, Aircraft Carriers, Defence, Navy Day, Defence Careers
 ---
 
 Every year on **4 December**, India celebrates **Navy Day** — marking the 1971 Operation Trident strike on Karachi harbour that turned the tide of the Bangladesh war. It is also a good moment to understand how the Indian Navy actually works: its command structure, the ships it operates, and where it is heading.
