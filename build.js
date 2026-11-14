@@ -110,9 +110,7 @@ out('index.html',page({title:cfg.name,desc:cfg.tagline,path:'/',image:cfg.defaul
   <button class="topic-btn active" data-filter="all">All Topics</button>
   <button class="topic-btn" data-filter="military">⚔️ Military &amp; Defence</button>
   <button class="topic-btn" data-filter="aviation">✈️ Aviation &amp; Aerospace</button>
-  <button class="topic-btn" data-filter="india">🇮🇳 Indian Armed Forces</button>
   <button class="topic-btn" data-filter="global">🌐 Global Defence</button>
-  <button class="topic-btn" data-filter="careers">🎯 Defence Careers</button>
 </div>
 </div><div id="posts-list">${posts.map(card).join('')}</div><div id="no-res" style="display:none;color:var(--mute);text-align:center;padding:2.5rem 0;font-size:1.05rem">No articles found matching your search.</div><script>
 let curFilter='all';
@@ -129,15 +127,11 @@ function runFilters(){
     const tags=(c.getAttribute('data-tags')||'').toLowerCase();
     let matchesTopic=true;
     if(curFilter==='military'){
-      matchesTopic=tags.includes('military')||tags.includes('defence')||tags.includes('special forces')||tags.includes('navy');
+      matchesTopic=tags.includes('military')||tags.includes('defence')||tags.includes('special forces')||tags.includes('navy')||tags.includes('army');
     }else if(curFilter==='aviation'){
-      matchesTopic=tags.includes('aviation')||tags.includes('aerospace')||tags.includes('aircraft')||tags.includes('air force')||tags.includes('garud');
-    }else if(curFilter==='india'){
-      matchesTopic=tags.includes('india')||tags.includes('indian');
+      matchesTopic=tags.includes('aviation')||tags.includes('aerospace')||tags.includes('aircraft')||tags.includes('air force');
     }else if(curFilter==='global'){
-      matchesTopic=tags.includes('global')||tags.includes('us military')||tags.includes('british');
-    }else if(curFilter==='careers'){
-      matchesTopic=tags.includes('defence careers')||tags.includes('ranks');
+      matchesTopic=tags.includes('global')||tags.includes('us')||tags.includes('uk')||tags.includes('nato');
     }
     const matchesSearch=!query||text.includes(query);
     const visible=matchesTopic&&matchesSearch;
@@ -188,13 +182,13 @@ out('author/index.html', page({
   </div>
 </div>
 <h2>A Note from the Author</h2>
-<p>Welcome to <strong>Vanguard Brief</strong>. I started this publication because defence and military topics are often overshadowed by heavy jargon, unverified rumors, and dramatic headlines. Many curious citizens, students, defence aspirants, and parents want to genuinely understand how our armed forces function, how modern defence tech works, and what military careers look like — without having to decode military acronyms or sift through sensationalism.</p>
-<p>By day, I work as an IT support engineer. My fascination with the armed forces, defence systems, and global security is deeply personal. I am not affiliated with the government, any defence contractor, or military branch. This blog is my independent space to study, digest, and explain defence topics in plain, accessible language.</p>
+<p>Welcome to <strong>Vanguard Brief</strong>. I started this publication because defence and aerospace topics are often overshadowed by heavy military jargon, unverified rumors, and dramatic headlines. Many curious readers, students, and aviation enthusiasts want to genuinely understand how modern defence systems function, how aerospace technology is engineered, and how armed forces operate globally — without having to decode military acronyms or sift through sensationalism.</p>
+<p>By day, I work as an IT support engineer. <strong>I am a civilian writer and independent researcher</strong>, with no employment, affiliation, or official connection to the armed forces, Ministry of Defence, or any defence contractor. This blog is my personal space to study, digest, and explain defence, aerospace, and aviation topics in plain, accessible language using open sources only.</p>
 <p><img src="/images/author-full.jpg" alt="Anush Varma with the 155mm/52Cal Mounted Gun System" style="max-height:520px;object-fit:cover;width:auto;margin:1.5rem auto;border-radius:8px;border:1px solid var(--line)"></p>
 <small style="display:block;text-align:center;color:var(--mute);margin-top:-0.8rem;margin-bottom:1.5rem">At a defence exhibition with a 155mm/52 Calibre Mounted Gun System (MGS)</small>
 <h2>Strict Editorial Standards</h2>
 <ul>
-  <li><strong>100% Open-Source Intelligence (OSINT):</strong> Every post relies exclusively on publicly verifiable information — official Ministry of Defence releases, PIB announcements, parliamentary committee reports, think-tank papers, and credible journalism.</li>
+  <li><strong>100% Open-Source Intelligence (OSINT):</strong> Every post relies exclusively on publicly verifiable information — official government releases, PIB announcements, parliamentary committee reports, think-tank papers, and reputable journalism.</li>
   <li><strong>Zero Classified or Operational Data:</strong> I do not publish confidential information, tactical positions, troop deployments, or sensitive operational details.</li>
   <li><strong>Calm, Objective &amp; Neutral:</strong> No hyperbole, no political bias, and no cheerleading. Facts are stated plainly, and disputed numbers are clearly identified as estimates.</li>
   <li><strong>Accountability:</strong> Sources are always credited, and factual corrections from readers are actively welcomed.</li>
@@ -202,10 +196,9 @@ out('author/index.html', page({
 <h2>Topics Covered</h2>
 <div class="tbl"><table>
   <tr><th>Focus Area</th><th>What is covered</th></tr>
-  <tr><td><strong>Indian Armed Forces</strong></td><td>Structure, commands, regiments, and operations of the Army, Navy, and Air Force.</td></tr>
-  <tr><td><strong>Defence Technology</strong></td><td>Fighter jets, warships, submarines, missiles, drones, and air-defence systems explained simply.</td></tr>
-  <tr><td><strong>Military Careers</strong></td><td>Selection procedures, academies (NDA, CDS, AFCAT), training, and special forces volunteering.</td></tr>
-  <tr><td><strong>Global Defence &amp; Analysis</strong></td><td>Comparative analysis of international armed forces and strategic alliances (Quad, NATO).</td></tr>
+  <tr><td><strong>Military &amp; Defence</strong></td><td>Structure, doctrines, warships, submarines, armor, and ground systems explained simply.</td></tr>
+  <tr><td><strong>Aviation &amp; Aerospace</strong></td><td>Fighter aircraft, commercial airliners, jet engines, avionics, radar, and stealth technology.</td></tr>
+  <tr><td><strong>Global Defence &amp; Strategy</strong></td><td>Comparative analysis of international armed forces, allied systems (Quad, NATO), and technological balance.</td></tr>
 </table></div>
 <h2>Get in Touch &amp; Suggest Topics</h2>
 <p>I follow a regular 2-week publishing schedule. If there is a defence system, battle history, or unit you want explained in simple words, or if you spot an error that needs correction, feel free to reach out:</p>

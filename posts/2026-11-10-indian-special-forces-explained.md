@@ -1,8 +1,8 @@
 ---
 title: Indian Special Forces Explained: Para SF, MARCOS, Garud and the New Bhairav Battalions
-description: Who are India's special forces, what does each one do, how are they linked, and how can you join? A simple step-by-step guide using open sources only.
+description: Who are India's special forces, what does each one do, and how are they linked? A clear civilian open-source guide to Para SF, MARCOS, Garud and the new Bhairav battalions.
 date: 2026-11-10
-tags: Military, India, Indian Armed Forces, Special Forces, Aviation, Para SF, MARCOS, Garud, Defence Careers
+tags: Military, Defence, Special Forces, Aviation, Para SF, MARCOS, Garud
 ---
 Each of India's three armed services has its own special force, and since 2019 a joint division has linked them. Here is who they are, what each one does, and why they are in the news again.
 
@@ -12,7 +12,7 @@ Each of India's three armed services has its own special force, and since 2019 a
 
 - India has three military special forces: **Para (SF)** in the Army, **MARCOS** in the Navy and the **Garud Commando Force** in the Air Force.
 - Since 2019, a tri-service body called the **Armed Forces Special Operations Division (AFSOD)** has brought them together for joint missions and training.
-- You cannot join any of them straight from civilian life. You first join the parent service, then **volunteer** and pass a very tough selection.
+- Selection is strictly internal: volunteers are drawn exclusively from active-duty serving military personnel who undergo rigorous probation.
 - In 2025, the Army announced **Bhairav light commando battalions**, a new layer between regular infantry and Para SF.
 
 
@@ -142,15 +142,15 @@ Two developments matter, and both are still unfolding.
 
 *Last updated: 10 November 2026. This is a developing issue, so please check recent news from reliable sources.*
 
-## How do you join?
+## Selection and Internal Volunteering
 
-There is **no direct civilian entry** into any of these forces. You first join the parent service, then volunteer.
+There is **no direct civilian recruitment** into special forces units. Volunteers are selected entirely from within the active-duty armed forces:
 
-- **Para (SF):** join the Army as an officer or a soldier, serve in a unit, then volunteer for the special forces probation. Officers usually enter through the NDA, the CDS exam, or other officer routes. Soldiers enter through Army recruitment. Rules have changed since the Agnipath scheme, so please read the latest official notices.
-- **MARCOS:** join the Navy, then volunteer for MARCOS selection. Only serving Navy personnel are eligible.
-- **Garud:** join the Air Force as an airman and be selected for the Garud Commando Force. Check the Air Force's official recruitment notice for the current route.
+- **Para (SF):** Serving officers and soldiers from Indian Army regiments volunteer for the rigorous 90-day probation period.
+- **MARCOS:** Drawn exclusively from qualified volunteers currently serving in the Indian Navy.
+- **Garud:** Drawn from active-duty Indian Air Force volunteers who complete specialized commando training.
 
-Selection is famous for being tough, and the dropout rate is high. The exact tests and pass rates are not officially published, so be careful with websites that claim to know everything. What matters most is steady fitness, mental strength and discipline, which you can start building now.
+Probation is intentionally demanding, focusing on endurance, tactical navigation, and specialized operational skills.
 
 ## Common myths
 
@@ -180,8 +180,8 @@ Q: 1. Which three services have their own special forces, and what are they call
 A: The Army has Para (SF), the Navy has MARCOS, and the Air Force has the Garud Commando Force.
 Q: 2. What is AFSOD and when did it become operational?
 A: The Armed Forces Special Operations Division, a tri-service body that links the three forces. It became operational in 2019.
-Q: 3. Can a civilian apply directly to Para SF?
-A: No. You must first join the Army, then volunteer for selection.
+Q: 3. Is there direct civilian entry into Para SF?
+A: No. Selection is strictly internal from active-duty serving military volunteers.
 Q: 4. Where do the Bhairav battalions sit, and how big are they?
 A: Between regular infantry and Para SF. Each has about 250 soldiers.
 Q: 5. Which ministry runs the NSG?

@@ -3,7 +3,7 @@ title: Indian Navy Explained: How the Fleet Is Organised and Its Aircraft Carrie
 description: How is the Indian Navy structured? What ships, submarines and aircraft does it operate? A clear open-source guide covering commands, carriers and what comes next — timed for Navy Day.
 date: 2026-12-03
 image: /images/navy-ins-vikrant.jpg
-tags: Military, Aviation, India, Indian Navy, Aerospace, Aircraft Carriers, Defence, Navy Day, Defence Careers
+tags: Military, Defence, Aviation, Aerospace, Indian Navy, Aircraft Carriers, Navy Day
 ---
 
 Every year on **4 December**, India celebrates **Navy Day** — marking the 1971 Operation Trident strike on Karachi harbour that turned the tide of the Bangladesh war. It is also a good moment to understand how the Indian Navy actually works: its command structure, the ships it operates, and where it is heading.
@@ -188,23 +188,6 @@ For those who read the Military Ranks post — here is a quick Indian Navy offic
 ## Navy Day: What Happened on 4 December 1971?
 
 **Operation Trident** was a missile boat attack on Karachi harbour during the 1971 India-Pakistan war. Three Indian missile boats — INS Nipat, INS Nirghat, and INS Veer — fired Styx anti-ship missiles and hit Pakistani fuel storage tanks and a minesweeper. Karachi harbour was lit on fire. It was the **first use of anti-ship missiles in combat in Asia**, and it crippled Pakistan's naval logistics. Navy Day marks this strike.
-
----
-
-## How to Join the Indian Navy
-
-All entry routes are through **official government channels only**. The main paths:
-
-| Entry | For | How |
-|---|---|---|
-| NDA (National Defence Academy) | 10+2 students (men) | UPSC NDA exam |
-| 10+2 B.Tech Cadet Entry | 10+2 PCM students | JEE score based |
-| University Entry Scheme (UES) | Final-year engineering students | Direct from campus |
-| Short Service Commission (SSC) | Graduates in various streams | Notification-based |
-| Sailor Entry (MR / NMR / AA) | 10th / 10+2 pass | Navy recruitment rallies |
-| Agniveer (Navy) | 17.5–21 years | Under Agnipath scheme |
-
-Official notifications are published only on **joinindiannavy.gov.in**.
 
 ---
 

@@ -2,31 +2,30 @@
 title: Welcome to Vanguard Brief
 description: What this blog covers, who it is for, and how every post is written.
 date: 2026-11-10
-tags: Introduction, Defence, Military, Aviation, India, Global
+tags: Military, Defence, Aviation, Aerospace, Global Defence
 ---
-Defence, technology and careers, explained in simple language. Here is what you will find on this blog and how it is written.
+Defence, aerospace and aviation, explained in simple language. Here is what you will find on this blog and how it is written.
 
-![Vanguard Brief: defence explained in simple language](/images/default.png)
+![Vanguard Brief: defence and aviation explained in simple language](/images/default.png)
 
 *Vanguard Brief*
 
 ## In 30 seconds
 
-- This blog explains the **Indian Armed Forces**, their technology and military careers, and also covers defence topics from around the world.
+- This blog explains modern military technology, aerospace and aviation, and strategic defence topics from India and around the world.
 - Every post uses **open-source information only**. I never share operational or confidential detail.
-- Posts are written for beginners: students, defence aspirants, parents and curious readers.
+- Posts are written for curious readers, students, aviation enthusiasts, and anyone who wants clear, jargon-free explanations.
 - Every post ends with a list of sources, so you can check the facts yourself.
 
 ## Why this blog exists
 
-Defence news is full of acronyms, rumours and half-truths. Many people want to understand how the forces work, how the technology fits together and how someone can actually join, but most explanations are either too technical or too dramatic. Vanguard Brief tries to sit in the middle: accurate, simple and calm.
+Defence news is full of acronyms, rumours and half-truths. Many people want to understand how military systems work, how aerospace technology is engineered, and how global forces compare, but most explanations are either too technical or sensationalized. Vanguard Brief provides calm, objective, open-source analysis.
 
 ## What you will find here
 
-- **The Indian Armed Forces:** how the Army, Navy and Air Force are organised, and what their units do.
-- **Defence technology:** aircraft, ships, missiles, drones and other systems, explained without jargon.
-- **Military careers:** how people join, what the roles are and what to expect.
-- **Global defence:** other countries' forces and equipment, often compared with India's, so you can see the bigger picture.
+- **Military & Defence:** how armed forces are structured, strategic doctrines, and naval and ground systems.
+- **Aviation & Aerospace:** fighter jets, commercial airliners, jet engines, radar systems, and aerospace engineering.
+- **Global Defence:** comparative analyses of international armed forces and strategic alliances.
 
 ## How every post is written
 
@@ -38,7 +37,7 @@ Defence news is full of acronyms, rumours and half-truths. Many people want to u
 
 ## About me
 
-I am a civilian writer and an IT support engineer by profession. My interest in the armed forces is personal, and this blog is where I explain what I learn in plain language. I am not affiliated with any government body or military service.
+I am a civilian writer and an IT support engineer by profession. I am not a military employee, defence contractor, or government official. My interest in defence and aviation is purely personal, and this blog is an independent civilian space to study and explain open-source information.
 
 You can find me on [LinkedIn](https://www.linkedin.com/in/anush-varma-kakarlapudi-780530234/), where I share every new post.
 
