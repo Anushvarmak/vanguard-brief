@@ -248,7 +248,7 @@ out('scheduler/index.html',page({
   }
   </script>`
 }));
-out('404.html',page({title:'Page not found',desc:'Not found',path:'/404.html',image:cfg.defaultImage,body:'<h1>Page not found</h1><p><a href="/">Back to home</a></p>'}));
+out('404.html',`<!doctype html><html><head><meta charset="utf-8"><title>Redirecting to ${esc(cfg.name)}</title><meta http-equiv="refresh" content="0; url=${base}/"><script>location.replace('${base}/');</script></head><body><p>Redirecting to <a href="${base}/">${esc(cfg.name)}</a>...</p></body></html>`);
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
   ['/','/author/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
 out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
