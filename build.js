@@ -51,7 +51,7 @@ const allPosts=fs.readdirSync('posts').filter(f=>f.endsWith('.md')).map(f=>{
 // In local DEV mode, show scheduled posts with badge so author can preview!
 const posts=allPosts.filter(p=>!p.draft&&(!p.scheduled||DEV));
 
-function page({title,desc,path:p,image,type='website',body,ld=''}){
+function page({title,desc,path:p,image,type='website',body,ld='',isAdmin=false}){
   const url=abs(p),img=image.startsWith('http')?image:abs(image);
   const full=p==='/'?cfg.name:`${title} | ${cfg.name}`;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -62,35 +62,27 @@ function page({title,desc,path:p,image,type='website',body,ld=''}){
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">${ld}</head><body>
-<header><a class="logo" href="/">${esc(cfg.name)}</a><nav><a href="/">Home</a><a href="/author/">Author</a><a id="sched-link" href="/scheduler/" style="display:none;color:var(--acc)">⚙️ Scheduler</a>${cfg.linkedin?`<a href="${cfg.linkedin}">LinkedIn</a>`:''}</nav></header>
-<main>${body}</main><footer>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</footer>
+<header class="site-header"><div class="header-inner">
+  <div class="brand-area"><a class="logo" href="/">🛡️ ${esc(cfg.name)}</a><span class="brand-badge">CIVILIAN OSINT</span></div>
+  <nav class="nav-bar">
+    <a class="nav-link ${p==='/'?'active':''}" href="/">Home</a>
+    <a class="nav-link ${p==='/author/'?'active':''}" href="/author/">Author</a>
+    ${cfg.linkedin?`<a class="nav-link nav-linkedin" href="${cfg.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a>`:''}
+  </nav>
+</div></header>
+<main>${body}</main>
+<footer>
+  <div>© ${new Date().getFullYear()} ${esc(cfg.author)}. Based on open-source information only.</div>
+  <div><a href="/admin/" class="footer-admin-link">Author Portal 🔒</a></div>
+</footer>
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 <script>
 (function(){
-  try{
-    var q=new URLSearchParams(location.search);
-    if(q.get('author')==='${pin}'){
-      localStorage.setItem('vg_auth','1');
-      history.replaceState(null,'',location.pathname);
-    }
-    if(localStorage.getItem('vg_auth')==='1'){
-      var s=document.getElementById('sched-link');
-      if(s)s.style.display='inline-block';
-    }
-  }catch(e){}
   var l=document.querySelector('.logo');
   if(l){
     l.addEventListener('dblclick',function(e){
       e.preventDefault();
-      var p=prompt('Author Access — Enter PIN:');
-      if(p==='${pin}'){
-        localStorage.setItem('vg_auth','1');
-        var s=document.getElementById('sched-link');
-        if(s)s.style.display='inline-block';
-        alert('Author Mode enabled! Scheduler is now visible in your navigation.');
-      }else if(p!==null){
-        alert('Incorrect PIN.');
-      }
+      location.href='${base}/admin/';
     });
   }
 })();
@@ -206,82 +198,186 @@ out('author/index.html', page({
 💼 <strong>LinkedIn:</strong> <a href="${esc(cfg.linkedin || '')}" target="_blank" rel="noopener">${esc(cfg.author)} on LinkedIn</a></p>
 </article>`
 }));
-out('scheduler/index.html',page({
-  title:'Post Scheduler (Author Only)',
-  desc:'Private editorial scheduler for Vanguard Brief.',
-  path:'/scheduler/',
+const totalPosts=allPosts.length;
+const livePosts=allPosts.filter(p=>!p.draft&&!p.scheduled);
+const schedPosts=allPosts.filter(p=>p.scheduled);
+const draftPosts=allPosts.filter(p=>p.draft);
+const aviationPosts=allPosts.filter(p=>p.tags.some(t=>/aviation|aerospace|aircraft|air force/i.test(t)));
+const militaryPosts=allPosts.filter(p=>p.tags.some(t=>/military|defence|navy|army|special forces/i.test(t)));
+
+out('admin/index.html',page({
+  title:'Admin & Post Scheduler Portal',
+  desc:'Private editorial and scheduling dashboard for Vanguard Brief.',
+  path:'/admin/',
   image:cfg.defaultImage,
   body:`
-  <div id="auth-lock" style="${DEV?'display:none':''}">
-    <div class="card" style="text-align:center;max-width:420px;margin:3rem auto;padding:2rem">
-      <h2 style="margin-top:0">🔒 Author Access Only</h2>
-      <p style="color:var(--mute);font-size:.9rem">This publishing scheduler is private. Enter your author PIN to view.</p>
-      <input type="password" id="pin-input" placeholder="Enter PIN" style="width:100%;padding:.75rem;margin:1rem 0;background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:1.1rem;text-align:center;outline:none">
-      <button onclick="checkPin()" style="width:100%;padding:.75rem;background:var(--acc);color:#10140f;font-weight:700;font-size:1rem;border:none;border-radius:6px;cursor:pointer">Unlock Scheduler</button>
-      <p id="pin-err" style="color:#e53e3e;font-size:.85rem;display:none;margin-top:.8rem">Incorrect PIN. Please try again.</p>
+  <div id="auth-lock">
+    <div class="card" style="text-align:center;max-width:440px;margin:3.5rem auto;padding:2.2rem;border-color:var(--acc)">
+      <div style="font-size:2.4rem;margin-bottom:.5rem">🛡️</div>
+      <h2 style="margin:0 0 .4rem">Vanguard Brief Admin</h2>
+      <p style="color:var(--mute);font-size:.92rem;margin-bottom:1.5rem">Private author dashboard. Enter your PIN to manage the post scheduler and draft queue.</p>
+      <input type="password" id="pin-input" placeholder="Enter Admin PIN" style="width:100%;padding:.85rem;margin-bottom:1rem;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:1.15rem;text-align:center;outline:none">
+      <button onclick="checkAdminPin()" style="width:100%;padding:.85rem;background:var(--acc);color:#0d110e;font-weight:700;font-size:1rem;border:none;border-radius:8px;cursor:pointer">Unlock Dashboard</button>
+      <p id="pin-err" style="color:#e53e3e;font-size:.88rem;display:none;margin-top:.85rem">Incorrect PIN. Please try again.</p>
     </div>
   </div>
-  <div id="scheduler-content" style="${DEV?'':'display:none'}">
+
+  <div id="admin-content" style="display:none">
     <article>
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">
-        <h1 style="margin:0">⚙️ Post Publishing Scheduler</h1>
-        <button onclick="logoutAuthor()" style="background:transparent;border:1px solid var(--line);color:var(--mute);padding:.4rem .85rem;border-radius:6px;cursor:pointer;font-size:.85rem">🔒 Log Out / Hide</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)">
+        <div>
+          <h1 style="margin:0;font-size:1.85rem">🛡️ Author &amp; Admin Dashboard</h1>
+          <p style="color:var(--mute);margin:.2rem 0 0;font-size:.9rem">Editorial queue, publication schedule, and topic management.</p>
+        </div>
+        <button onclick="logoutAdmin()" style="background:var(--card);border:1px solid var(--line);color:var(--mute);padding:.45rem .95rem;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600">🔒 Lock &amp; Log Out</button>
       </div>
-      <p style="color:var(--mute)">Private author dashboard. Control and review when your posts go live to the public.</p>
-      <div class="card" style="border:1px solid var(--acc);background:#181e16;margin:1.5rem 0">
-        <h3 style="margin:0 0 .5rem;color:var(--acc)">How Post Scheduling Works</h3>
-        <p style="margin:0;font-size:.92rem;line-height:1.6">
-          • <strong>To schedule a post:</strong> Set <code>date: YYYY-MM-DD</code> in the top frontmatter of any post in <code>posts/</code>.<br>
-          • <strong>Automated Protection:</strong> Any post with a future date is <em>completely hidden</em> from regular visitors until that date arrives.<br>
-          • <strong>Automatic Daily Release:</strong> GitHub Actions runs every midnight UTC to publish posts as soon as their target date is reached.<br>
-          • <strong>Drafts:</strong> Set <code>draft: true</code> to keep a post completely unpublished regardless of date.
-        </p>
+
+      <!-- Overview Stats Grid -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card"><div class="admin-stat-num">${totalPosts}</div><div class="admin-stat-lbl">Total Posts</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" style="color:#68d391">${livePosts.length}</div><div class="admin-stat-lbl">Live on Site</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" style="color:#f0c642">${schedPosts.length}</div><div class="admin-stat-lbl">Scheduled</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num">${aviationPosts.length}</div><div class="admin-stat-lbl">Aviation &amp; Aero</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num">${militaryPosts.length}</div><div class="admin-stat-lbl">Military &amp; Def</div></div>
       </div>
-      <h2>All Posts (${allPosts.length})</h2>
-      <div class="tbl"><table>
-        <tr><th>Status</th><th>Post Title</th><th>Target Date</th><th>Read Time</th><th>Preview Link</th></tr>
+
+      <!-- Interactive Subtopic and Status Filter Controls -->
+      <div class="admin-filter-bar">
+        <div class="admin-filter-row">
+          <span class="admin-filter-label">Status:</span>
+          <button class="admin-filter-btn active" data-status-filter="all">All (${totalPosts})</button>
+          <button class="admin-filter-btn" data-status-filter="live">🟢 Live (${livePosts.length})</button>
+          <button class="admin-filter-btn" data-status-filter="scheduled">⏳ Scheduled (${schedPosts.length})</button>
+          ${draftPosts.length ? `<button class="admin-filter-btn" data-status-filter="draft">📝 Drafts (${draftPosts.length})</button>` : ''}
+        </div>
+        <div class="admin-filter-row">
+          <span class="admin-filter-label">Subtopic:</span>
+          <button class="admin-filter-btn active" data-topic-filter="all">All Subtopics</button>
+          <button class="admin-filter-btn" data-topic-filter="military">⚔️ Military &amp; Defence</button>
+          <button class="admin-filter-btn" data-topic-filter="aviation">✈️ Aviation &amp; Aerospace</button>
+          <button class="admin-filter-btn" data-topic-filter="global">🌐 Global Defence</button>
+        </div>
+        <div style="margin-top:.25rem">
+          <input type="search" id="admin-search" placeholder="🔍 Search posts by title, tag, or filename..." style="width:100%;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:.88rem;outline:none">
+        </div>
+      </div>
+
+      <!-- Scheduler Table -->
+      <div class="tbl"><table id="admin-posts-table">
+        <thead><tr><th>Status</th><th>Post Title &amp; Category</th><th>Target Date</th><th>Read</th><th>Action</th></tr></thead>
+        <tbody>
         ${allPosts.map(p=>{
           const daysLeft=Math.ceil((new Date(p.date)-new Date(today))/(1000*60*60*24));
-          let badgeHtml='';
-          if(p.draft){badgeHtml='<span class="badge" style="background:#333;color:#bbb">Draft</span>';}
-          else if(p.scheduled){badgeHtml=`<span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled (${daysLeft}d left)</span>`;}
-          else{badgeHtml='<span class="badge" style="background:#1c3d23;color:#68d391">Live</span>';}
+          let statusKey='live', badgeHtml='';
+          if(p.draft){statusKey='draft'; badgeHtml='<span class="badge" style="background:#333;color:#bbb">Draft</span>';}
+          else if(p.scheduled){statusKey='scheduled'; badgeHtml=`<span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled (${daysLeft}d left)</span>`;}
+          else{statusKey='live'; badgeHtml='<span class="badge" style="background:#1c3d23;color:#68d391">Live</span>';}
+          
           const tagBadges=p.tags.map(t=>`<span class="badge" style="background:#1a2217;border:1px solid var(--line);color:var(--mute);margin:0.2rem 0.2rem 0 0;font-size:0.7rem">#${esc(t)}</span>`).join('');
-          return `<tr><td>${badgeHtml}</td><td><strong>${esc(p.title)}</strong><br><small style="color:var(--mute)">posts/${esc(p.file)}</small><div style="margin-top:0.35rem">${tagBadges}</div></td><td><code>${p.date}</code></td><td>${p.mins} min</td><td><a href="/posts/${p.slug}/">Preview Post →</a></td></tr>`;
+          return `<tr class="admin-post-row" data-status="${statusKey}" data-tags="${esc(p.tags.join(',').toLowerCase())}">
+            <td>${badgeHtml}</td>
+            <td><strong>${esc(p.title)}</strong><br><small style="color:var(--mute)">posts/${esc(p.file)}</small><div style="margin-top:0.35rem">${tagBadges}</div></td>
+            <td><code>${p.date}</code></td>
+            <td>${p.mins} min</td>
+            <td><a href="/posts/${p.slug}/" style="font-weight:600">Preview →</a></td>
+          </tr>`;
         }).join('')}
+        </tbody>
       </table></div>
+      <div id="admin-no-match" style="display:none;color:var(--mute);text-align:center;padding:2rem 0">No posts match the selected filter.</div>
+
+      <!-- Automation Info Card -->
+      <div class="card" style="border:1px solid var(--line);background:#131912;margin:2rem 0 0">
+        <h3 style="margin:0 0 .5rem;color:var(--acc);font-size:1.05rem">How the Automated Scheduler Works</h3>
+        <p style="margin:0;font-size:.9rem;line-height:1.6;color:var(--mute)">
+          • <strong>To schedule a post:</strong> Set <code>date: YYYY-MM-DD</code> in the top frontmatter of any post in <code>posts/</code>.<br>
+          • <strong>Protection:</strong> Posts with future dates are automatically hidden from regular visitors on the public homepage.<br>
+          • <strong>Automatic Daily Release:</strong> GitHub Actions runs every midnight UTC, detects when the target date arrives, and automatically publishes the post live to your visitors.
+        </p>
+      </div>
     </article>
   </div>
+
   <script>
-  function checkPin(){
+  let activeStatus='all', activeTopic='all';
+  const tableRows=document.querySelectorAll('#admin-posts-table tbody tr.admin-post-row');
+  const searchInput=document.getElementById('admin-search');
+  const noMatch=document.getElementById('admin-no-match');
+
+  function filterAdminTable(){
+    const query=(searchInput?searchInput.value:'').toLowerCase().trim();
+    let shown=0;
+    tableRows.forEach(row=>{
+      const status=row.getAttribute('data-status');
+      const tags=row.getAttribute('data-tags')||'';
+      const text=row.innerText.toLowerCase();
+
+      let matchStatus = (activeStatus==='all') || (status===activeStatus);
+      let matchTopic = (activeTopic==='all');
+      if(activeTopic==='military') matchTopic = tags.includes('military')||tags.includes('defence')||tags.includes('navy');
+      if(activeTopic==='aviation') matchTopic = tags.includes('aviation')||tags.includes('aerospace')||tags.includes('aircraft');
+      if(activeTopic==='global') matchTopic = tags.includes('global')||tags.includes('ranks');
+
+      let matchSearch = !query || text.includes(query);
+      let visible = matchStatus && matchTopic && matchSearch;
+      row.style.display = visible ? '' : 'none';
+      if(visible) shown++;
+    });
+    if(noMatch) noMatch.style.display = (shown===0)?'block':'none';
+  }
+
+  document.querySelectorAll('[data-status-filter]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-status-filter]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeStatus = btn.getAttribute('data-status-filter');
+      filterAdminTable();
+    });
+  });
+
+  document.querySelectorAll('[data-topic-filter]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-topic-filter]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTopic = btn.getAttribute('data-topic-filter');
+      filterAdminTable();
+    });
+  });
+
+  if(searchInput) searchInput.addEventListener('input', filterAdminTable);
+
+  function checkAdminPin(){
     const val=document.getElementById('pin-input').value;
     if(val==='${pin}'){
       document.getElementById('auth-lock').style.display='none';
-      document.getElementById('scheduler-content').style.display='block';
+      document.getElementById('admin-content').style.display='block';
       localStorage.setItem('vg_auth','1');
-      var s=document.getElementById('sched-link');
-      if(s)s.style.display='inline-block';
     }else{
       document.getElementById('pin-err').style.display='block';
     }
   }
-  function logoutAuthor(){
+
+  function logoutAdmin(){
     localStorage.removeItem('vg_auth');
-    location.href='/';
+    location.reload();
   }
-  document.getElementById('pin-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
+
+  document.getElementById('pin-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')checkAdminPin();});
   if(localStorage.getItem('vg_auth')==='1'){
     const lock=document.getElementById('auth-lock');
-    const content=document.getElementById('scheduler-content');
-    if(lock)lock.style.display='none';
-    if(content)content.style.display='block';
+    const content=document.getElementById('admin-content');
+    if(lock) lock.style.display='none';
+    if(content) content.style.display='block';
   }
   </script>`
 }));
+
+// Forward /scheduler/ to /admin/ seamlessly
+out('scheduler/index.html',`<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${base}/admin/"><script>location.replace('${base}/admin/');</script></head><body><p>Redirecting to <a href="${base}/admin/">Admin Portal</a>...</p></body></html>`);
 out('404.html',`<!doctype html><html><head><meta charset="utf-8"><title>Redirecting to ${esc(cfg.name)}</title><meta http-equiv="refresh" content="0; url=${base}/"><script>location.replace('${base}/');</script></head><body><p>Redirecting to <a href="${base}/">${esc(cfg.name)}</a>...</p></body></html>`);
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
   ['/','/author/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
-out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
+out('robots.txt',`User-agent: *\nDisallow: /admin/\nDisallow: /scheduler/\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
 console.log(`Built ${posts.length} post(s) into dist/`);
 if(DEV)http.createServer((q,r)=>{let f=path.join('dist',decodeURIComponent(q.url.split('?')[0]));
   if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');

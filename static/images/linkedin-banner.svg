@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b100d"/>
+      <stop offset="50%" stop-color="#111812"/>
+      <stop offset="100%" stop-color="#18221a"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#f3e5ab"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#253527" stroke-width="0.75" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bg)"/>
+  <rect width="1584" height="396" fill="url(#grid)"/>
+
+  <!-- Right Side Graphic Elements (Radar / Tech Rings) -->
+  <circle cx="1380" cy="198" r="160" fill="none" stroke="#b9a44c" stroke-width="1.5" stroke-opacity="0.25" stroke-dasharray="8,6"/>
+  <circle cx="1380" cy="198" r="110" fill="none" stroke="#b9a44c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <circle cx="1380" cy="198" r="50" fill="none" stroke="#b9a44c" stroke-width="1" stroke-opacity="0.5"/>
+  <circle cx="1380" cy="198" r="4" fill="#d4af37"/>
+  <line x1="1200" y1="198" x2="1560" y2="198" stroke="#b9a44c" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="1380" y1="18" x2="1380" y2="378" stroke="#b9a44c" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Jet Silhouette Silhouette on the right -->
+  <path d="M 1380 140 L 1385 170 L 1425 195 L 1390 198 L 1395 220 L 1405 228 L 1380 224 L 1355 228 L 1365 220 L 1370 198 L 1335 195 L 1375 170 Z" fill="#d4af37" fill-opacity="0.25"/>
+
+  <!-- Subtle Decorative Gold Accent Borders -->
+  <line x1="420" y1="65" x2="1200" y2="65" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="420" y1="335" x2="1200" y2="335" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Subheading Top -->
+  <text x="460" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#b9a44c">IT SUPPORT ENGINEER  •  CIVILIAN WRITER &amp; RESEARCHER</text>
+
+  <!-- Name -->
+  <text x="460" y="165" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="46" font-weight="800" fill="#ffffff" letter-spacing="0.5">Anush Varma Kakarlapudi</text>
+
+  <!-- Tagline -->
+  <text x="460" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="400" fill="#c3cbb8">Defence, aerospace and aviation explained in simple language</text>
+
+  <!-- Badges / Pill Tags -->
+  <!-- Pill 1: Military & Defence -->
+  <rect x="460" y="235" width="180" height="34" rx="17" fill="#1b241c" stroke="#344737" stroke-width="1.5"/>
+  <text x="550" y="257" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="600" fill="#e7e9df" text-anchor="middle">⚔️ Military &amp; Defence</text>
+
+  <!-- Pill 2: Aviation & Aerospace -->
+  <rect x="652" y="235" width="195" height="34" rx="17" fill="#1b241c" stroke="#344737" stroke-width="1.5"/>
+  <text x="749.5" y="257" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="600" fill="#e7e9df" text-anchor="middle">✈️ Aviation &amp; Aerospace</text>
+
+  <!-- Pill 3: Global Defence -->
+  <rect x="859" y="235" width="165" height="34" rx="17" fill="#1b241c" stroke="#344737" stroke-width="1.5"/>
+  <text x="941.5" y="257" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="600" fill="#e7e9df" text-anchor="middle">🌐 Global Defence</text>
+
+  <!-- Footer Contact Info -->
+  <text x="460" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#b9a44c" letter-spacing="1.5">EMAIL</text>
+  <text x="518" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#e7e9df">kakarlapudianushvarma@gmail.com</text>
+
+  <text x="820" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#b9a44c" letter-spacing="1.5">BLOG</text>
+  <text x="876" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#e7e9df">anushvarmak.github.io/vanguard-brief</text>
+</svg>
