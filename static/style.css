@@ -27,11 +27,13 @@ a:hover { color: #dfbe65; }
 /* Dedicated Header & Separate Navbar */
 header.site-header {
   border-bottom: 1px solid var(--line);
-  background: rgba(13, 17, 14, 0.92);
-  backdrop-filter: blur(10px);
+  background: rgba(13, 17, 14, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
 .header-inner {

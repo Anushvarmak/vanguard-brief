@@ -1,0 +1,12 @@
+{
+  "name": "vanguard-brief",
+  "version": "1.0.0",
+  "description": "Vanguard Brief — Civilian OSINT & Defence Technology Publication",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js serve",
+    "admin": "node admin-server.js"
+  },
+  "author": "Anush Varma Kakarlapudi",
+  "license": "ISC"
+}
