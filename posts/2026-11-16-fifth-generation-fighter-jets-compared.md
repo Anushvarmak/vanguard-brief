@@ -51,16 +51,32 @@ To qualify as a true fifth-generation aircraft, an airframe must combine four fo
 
 The F-35 is currently the only fifth-generation fighter produced at scale, with over 1,000 operational aircraft across more than 17 allied nations.
 
+![Lockheed Martin F-35 Lightning II stealth fighter in flight](/images/fighter-f35-lightning.jpg)
+
+*Lockheed Martin F-35 Lightning II: Note the faceted nose, edge alignment, and smooth single-engine fuselage engineered for very low radar observability.*
+
 - **Design Philosophy:** The F-35 was not designed to out-turn an airshow fighter in a dogfight. Instead, it was built so that the pilot spots, identifies, and destroys the enemy 80 kilometers away before the opposing pilot even knows an aircraft is in the airspace.
 - **Engine:** Powered by the Pratt & Whitney F135, the most powerful single combat turbofan engine in operational service, producing over 191 kN (43,000 lbf) of afterburning thrust.
 - **Stealth Architecture:** Exceptional all-aspect stealth. Frontal Radar Cross Section (RCS) is estimated at roughly **0.0015 m²** (equivalent to a metal golf ball).
 - **The Sensor Supercomputer:** Features the APG-81 AESA radar, the Electro-Optical Targeting System (EOTS), and the AN/AAQ-37 Distributed Aperture System (DAS), which stitches together imagery from six infrared cameras surrounding the fuselage directly onto the pilot's $400,000 helmet display.
+
+![F-35 Gen III Helmet Mounted Display System](/images/fighter-f35-helmet.jpg)
+
+*The Rockwell Collins / Elbit Gen III Helmet Mounted Display System (HMDS): custom-molded to each pilot's skull using 3D laser scanning.*
+
+![F-35 Gen III HMDS technical breakdown and 360-degree DAS sensor fusion](/images/fighter-f35-hmds-infographic.jpg)
+
+*Architecture of the F-35 HMDS: replacing the cockpit physical HUD entirely and providing synthetic "x-ray" night and daytime vision through the aircraft floor.*
 
 ---
 
 ### 2. Sukhoi Su-57 Felon (Russia)
 
 Russia's response to Western stealth programs, the Su-57 first flew in 2010 and entered limited service with the Russian Aerospace Forces in 2020.
+
+![Sukhoi Su-57 Felon stealth fighter in flight](/images/fighter-su57-felon.jpg)
+
+*Sukhoi Su-57 Felon: Demonstrating its blended wing-body and digital pixelated camouflage, engineered for super-maneuverability and high-angle alpha flight.*
 
 - **Design Philosophy:** Russian aeronautical doctrine emphasizes extreme maneuverability and kinetic survival over pure stealth. If an engagement degenerates into a close-range dogfight or visual arena, the Su-57 is built to dominate.
 - **Engine:** Currently flying with AL-41F1 engines, transitioning to the newly developed *Izdeliye 30* (AL-51F1) engines featuring full **3D thrust vectoring nozzles** capable of vectoring pitch and yaw simultaneously.
@@ -73,6 +89,10 @@ Russia's response to Western stealth programs, the Su-57 first flew in 2010 and 
 
 Entering service with the People's Liberation Army Air Force (PLAAF) in 2017, the J-20 is Asia's first operational fifth-generation stealth aircraft.
 
+![Chengdu J-20 Mighty Dragon stealth fighter in flight](/images/fighter-j20-dragon.jpg)
+
+*Chengdu J-20 Mighty Dragon: Showing the forward canards, delta wings, and canted twin vertical stabilizers designed for long-range Indo-Pacific maritime interception.*
+
 - **Design Philosophy:** Built as a heavy, long-range air-superiority and strike fighter. With large internal fuel volume, it is optimized to operate deep over the Pacific without requiring vulnerable aerial refueling tankers.
 - **Aerodynamic Layout:** Unique among 5th-gen jets for using a **canard-delta configuration** with canted twin vertical stabilizers and Diverterless Supersonic Inlets (DSI). While purists argue that forward canards increase radar reflections during maneuvering, Chinese engineers aligned the canard edges with the main delta wings to preserve frontal stealth in straight flight.
 - **Engine Evolution:** Early production airframes flew on Russian AL-31FN engines, then transitioned to indigenous Shenyang WS-10C engines with serrated stealth exhaust nozzles. Newer batches are testing with high-thrust WS-15 engines to achieve full supercruise.
@@ -83,6 +103,10 @@ Entering service with the People's Liberation Army Air Force (PLAAF) in 2017, th
 ### 4. DRDO / ADA AMCA (India's Advanced Medium Combat Aircraft)
 
 India's AMCA is a twin-engine, multi-role fifth-generation fighter currently under development by the Aeronautical Development Agency (ADA) in partnership with the Defence Research and Development Organisation (DRDO) and Hindustan Aeronautics Limited (HAL).
+
+![DRDO ADA AMCA scale model at Aero India exhibition](/images/fighter-amca-drdo.jpg)
+
+*Official scale model of India's Advanced Medium Combat Aircraft (AMCA) displayed at Aero India, showcasing its Diverterless Supersonic Inlet (DSI) and serpentine intake.*
 
 - **CCS Sanction:** On 7 March 2024, the Cabinet Committee on Security (CCS) officially cleared the AMCA program with a budget sanction of ₹15,000 crore ($1.8 billion), funding the fabrication of five operational flight prototypes.
 - **Stealth Engineering:**
