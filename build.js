@@ -78,8 +78,8 @@ function page({title,desc,path:p,image,type='website',body,ld='',isAdmin=false})
 ${cfg.goatcounter?`<script data-goatcounter="https://${cfg.goatcounter}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`:''}
 </body></html>`.replace(/(src|href)="\/(?!\/)/g,`$1="${base}/`);
 }
-const tagLinks=p=>p.tags.map(t=>`<a href="/tags/${slug(t)}/">#${esc(t.replace(/\s+/g,''))}</a>`).join('');
-const card=p=>`<div class="card" data-tags="${esc(p.tags.join(',').toLowerCase())}">${p.own?`<img src="${p.image}" alt="${esc(p.title)}" width="800" height="450" loading="lazy">`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a>${p.scheduled?` <span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled: ${fmt(p.date)}</span>`:''}</h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
+const tagLinks=p=>p.tags.map(t=>`<a href="/tags/${slug(t)}/" aria-label="View all posts tagged ${esc(t)}">#${esc(t.replace(/\s+/g,''))}</a>`).join('');
+const card=p=>`<div class="card" data-tags="${esc(p.tags.join(',').toLowerCase())}">${p.own?`<a href="/posts/${p.slug}/" aria-label="${esc(p.title)}"><img src="${p.image}" alt="${esc(p.title)}" width="800" height="450" loading="lazy"></a>`:''}<h2><a href="/posts/${p.slug}/">${esc(p.title)}</a>${p.scheduled?` <span class="badge" style="background:#554415;color:#f0c642;border:1px solid #b9a44c">Scheduled: ${fmt(p.date)}</span>`:''}</h2><p>${esc(p.desc)}</p><small>${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div></div>`;
 const out=(p,c)=>{const f=path.join('dist',p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,c);};
 
 fs.rmSync('dist',{recursive:true,force:true});
@@ -138,8 +138,8 @@ for(const p of allPosts.filter(p=>!p.draft)){
   const ld=`<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'BlogPosting',headline:p.title,description:p.desc,datePublished:p.date,author:{'@type':'Person',name:cfg.author},image:abs(p.image),mainEntityOfPage:u})}</script>`;
   const schedNotice=p.scheduled?`<div style="background:#2a2310;border:1px solid #b9a44c;color:#f0c642;padding:0.75rem 1rem;border-radius:6px;margin:1rem 0 1.5rem">📅 <strong>Author Preview:</strong> This post is scheduled to publish on <strong>${fmt(p.date)}</strong>. It is not indexed or listed on the public homepage yet.</div>`:'';
   out(`posts/${p.slug}/index.html`,page({title:p.title,desc:p.desc,path:`/posts/${p.slug}/`,image:p.image,type:'article',ld,
-    body:`<article>${schedNotice}<h1>${esc(p.title)}</h1><small>${esc(cfg.author)} · ${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div>${p.own?`<p><img src="${p.image}" alt="${esc(p.title)}"></p>`:''}${p.html}
-<div class="share"><strong>Share:</strong> <a href="https://www.linkedin.com/sharing/share-offsite/?url=${q(u)}">LinkedIn</a><a href="https://wa.me/?text=${q(p.title+' '+u)}">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=${q(p.title)}&url=${q(u)}">X</a></div>${g}</article>`}));
+    body:`<article>${schedNotice}<h1>${esc(p.title)}</h1><small>${esc(cfg.author)} · ${fmt(p.date)} · ${p.mins} min read</small><div class="tags">${tagLinks(p)}</div>${p.own?`<p><img src="${p.image}" alt="${esc(p.title)}" width="800" height="450"></p>`:''}${p.html}
+<div class="share"><strong>Share:</strong> <a href="https://www.linkedin.com/sharing/share-offsite/?url=${q(u)}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">LinkedIn</a><a href="https://wa.me/?text=${q(p.title+' '+u)}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=${q(p.title)}&url=${q(u)}" target="_blank" rel="noopener" aria-label="Share on X (Twitter)">X (Twitter)</a></div>${g}</article>`}));
 }
 const tags=[...new Set(posts.flatMap(p=>p.tags))];
 for(const t of tags)out(`tags/${slug(t)}/index.html`,page({title:`#${t}`,desc:`Posts tagged ${t} on ${cfg.name}`,path:`/tags/${slug(t)}/`,image:cfg.defaultImage,
@@ -157,8 +157,8 @@ out('author/index.html', page({
     <h1 style="margin:0 0 .3rem;font-size:1.8rem">${esc(cfg.author)}</h1>
     <p style="color:var(--mute);margin:0 0 .8rem">Civilian Writer &amp; IT Support Engineer · Founder of Vanguard Brief</p>
     <div class="share" style="margin:0">
-      ${cfg.email ? `<a href="mailto:${esc(cfg.email)}">✉ Email</a>` : ''}
-      ${cfg.linkedin ? `<a href="${esc(cfg.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ''}
+      ${cfg.email ? `<a href="mailto:${esc(cfg.email)}" aria-label="Send email to ${esc(cfg.author)}">✉ Email</a>` : ''}
+      ${cfg.linkedin ? `<a href="${esc(cfg.linkedin)}" target="_blank" rel="noopener" aria-label="${esc(cfg.author)} on LinkedIn">LinkedIn ↗</a>` : ''}
     </div>
   </div>
 </div>
@@ -197,7 +197,7 @@ const militaryPosts=allPosts.filter(p=>p.tags.some(t=>/military|defence|navy|arm
 out('404.html',`<!doctype html><html><head><meta charset="utf-8"><title>Redirecting to ${esc(cfg.name)}</title><meta http-equiv="refresh" content="0; url=${base}/"><script>location.replace('${base}/');</script></head><body><p>Redirecting to <a href="${base}/">${esc(cfg.name)}</a>...</p></body></html>`);
 out('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">`.replace('sitemap.org','sitemaps.org')+
   ['/','/author/',...posts.map(p=>`/posts/${p.slug}/`),...tags.map(t=>`/tags/${slug(t)}/`)].map(u=>`<url><loc>${abs(u)}</loc></url>`).join('')+'</urlset>');
-out('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
+out('robots.txt',`User-agent: *\nDisallow:\nSitemap: ${abs('/sitemap.xml')}\n`);
 console.log(`Built ${posts.length} post(s) into dist/`);
 if(DEV)http.createServer((q,r)=>{let f=path.join('dist',decodeURIComponent(q.url.split('?')[0]));
   if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');

@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e0b"/>
+      <stop offset="50%" stop-color="#121813"/>
+      <stop offset="100%" stop-color="#080b09"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182218"/>
+      <stop offset="100%" stop-color="#101610"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1d271c" stroke-width="1" opacity="0.4">
+    <line x1="60" y1="0" x2="60" y2="680"/>
+    <line x1="330" y1="0" x2="330" y2="680"/>
+    <line x1="600" y1="0" x2="600" y2="680"/>
+    <line x1="870" y1="0" x2="870" y2="680"/>
+    <line x1="1140" y1="0" x2="1140" y2="680"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="620" x2="1200" y2="620"/>
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(60, 48)">
+    <rect x="0" y="0" width="118" height="24" rx="4" fill="#2a2310" stroke="#b9a44c" stroke-width="1"/>
+    <text x="59" y="16" fill="#f0c642" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.5">AEROSPACE INTEL</text>
+    
+    <text x="0" y="52" fill="#ecf0e7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" letter-spacing="0.5">Fifth-Generation Stealth Fighters Compared</text>
+    <text x="0" y="74" fill="#97a390" font-family="system-ui, -apple-system, sans-serif" font-size="13">Architectural comparison of stealth airframes, engine configuration, sensor fusion, and operational status.</text>
+  </g>
+
+  <!-- 4 Comparison Columns -->
+  <!-- CARD 1: F-35 Lightning II -->
+  <g transform="translate(60, 140)" filter="url(#shadow)">
+    <rect width="255" height="460" rx="10" fill="url(#cardGrad)" stroke="#273625" stroke-width="1.5"/>
+    <rect x="0" y="0" width="255" height="6" rx="3" fill="#3b82f6"/>
+    
+    <text x="20" y="34" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">UNITED STATES / ALLIES</text>
+    <text x="20" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="19" font-weight="800">F-35 Lightning II</text>
+    <text x="20" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Lockheed Martin</text>
+    
+    <rect x="20" y="94" width="70" height="22" rx="4" fill="#14311e" stroke="#22c55e" stroke-width="1"/>
+    <text x="55" y="109" fill="#4ade80" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">OPERATIONAL</text>
+    
+    <!-- Specs -->
+    <g transform="translate(20, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ENGINE SETUP</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Single P&amp;W F135 (191 kN)</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ESTIMATED RCS</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">~0.0015 m² (Golf-ball class)</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX SPEED</text>
+      <text x="0" y="104" fill="#ecf0e7" font-size="12" font-weight="600">Mach 1.6 (Non-supercruise)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">COMBAT RADIUS</text>
+      <text x="0" y="148" fill="#ecf0e7" font-size="12" font-weight="600">~1,240 km (Internal fuel)</text>
+      
+      <text x="0" y="176" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">KEY ADVANTAGE</text>
+      <text x="0" y="194" fill="#c9a84c" font-size="11" font-weight="600">Sensor Fusion &amp; MADL Data-link</text>
+      <text x="0" y="210" fill="#97a390" font-size="10.5">Operates as a flying supercomputer</text>
+      
+      <text x="0" y="238" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">FLEET PRODUCTION</text>
+      <text x="0" y="254" fill="#4ade80" font-size="12" font-weight="700">1,000+ Delivered Worldwide</text>
+    </g>
+  </g>
+
+  <!-- CARD 2: Su-57 Felon -->
+  <g transform="translate(335, 140)" filter="url(#shadow)">
+    <rect width="255" height="460" rx="10" fill="url(#cardGrad)" stroke="#273625" stroke-width="1.5"/>
+    <rect x="0" y="0" width="255" height="6" rx="3" fill="#ef4444"/>
+    
+    <text x="20" y="34" fill="#fca5a5" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">RUSSIA</text>
+    <text x="20" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="19" font-weight="800">Su-57 Felon</text>
+    <text x="20" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Sukhoi (UAC)</text>
+    
+    <rect x="20" y="94" width="90" height="22" rx="4" fill="#302611" stroke="#eab308" stroke-width="1"/>
+    <text x="65" y="109" fill="#facc15" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">LOW-RATE PROD</text>
+    
+    <!-- Specs -->
+    <g transform="translate(20, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ENGINE SETUP</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Twin AL-41F1 / Izd. 30</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ESTIMATED RCS</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">~0.1 to 0.5 m² (Higher frontal RCS)</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX SPEED</text>
+      <text x="0" y="104" fill="#ecf0e7" font-size="12" font-weight="600">Mach 2.0 (Supercruise capable)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">COMBAT RADIUS</text>
+      <text x="0" y="148" fill="#ecf0e7" font-size="12" font-weight="600">~1,500 km (High internal capacity)</text>
+      
+      <text x="0" y="176" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">KEY ADVANTAGE</text>
+      <text x="0" y="194" fill="#c9a84c" font-size="11" font-weight="600">3D Thrust Vectoring &amp; IRST</text>
+      <text x="0" y="210" fill="#97a390" font-size="10.5">Unmatched close-in agility</text>
+      
+      <text x="0" y="238" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">FLEET PRODUCTION</text>
+      <text x="0" y="254" fill="#facc15" font-size="12" font-weight="700">~30-36 Airframes Built</text>
+    </g>
+  </g>
+
+  <!-- CARD 3: J-20 Mighty Dragon -->
+  <g transform="translate(610, 140)" filter="url(#shadow)">
+    <rect width="255" height="460" rx="10" fill="url(#cardGrad)" stroke="#273625" stroke-width="1.5"/>
+    <rect x="0" y="0" width="255" height="6" rx="3" fill="#eab308"/>
+    
+    <text x="20" y="34" fill="#fde047" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
+    <text x="20" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="19" font-weight="800">J-20 Mighty Dragon</text>
+    <text x="20" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Chengdu Aerospace Corp</text>
+    
+    <rect x="20" y="94" width="70" height="22" rx="4" fill="#14311e" stroke="#22c55e" stroke-width="1"/>
+    <text x="55" y="109" fill="#4ade80" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">OPERATIONAL</text>
+    
+    <!-- Specs -->
+    <g transform="translate(20, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ENGINE SETUP</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Twin WS-10C / WS-15</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ESTIMATED RCS</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">~0.01 to 0.05 m² (Frontal aspect)</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX SPEED</text>
+      <text x="0" y="104" fill="#ecf0e7" font-size="12" font-weight="600">Mach 2.0+ (Canard-Delta)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">COMBAT RADIUS</text>
+      <text x="0" y="148" fill="#ecf0e7" font-size="12" font-weight="600">~1,800 to 2,000 km (Heavy fighter)</text>
+      
+      <text x="0" y="176" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">KEY ADVANTAGE</text>
+      <text x="0" y="194" fill="#c9a84c" font-size="11" font-weight="600">Long Range &amp; PL-15 Missiles</text>
+      <text x="0" y="210" fill="#97a390" font-size="10.5">Designed to hunt tankers &amp; AWACS</text>
+      
+      <text x="0" y="238" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">FLEET PRODUCTION</text>
+      <text x="0" y="254" fill="#4ade80" font-size="12" font-weight="700">200–250+ in PLAAF Service</text>
+    </g>
+  </g>
+
+  <!-- CARD 4: AMCA -->
+  <g transform="translate(885, 140)" filter="url(#shadow)">
+    <rect width="255" height="460" rx="10" fill="url(#cardGrad)" stroke="#c9a84c" stroke-width="2"/>
+    <rect x="0" y="0" width="255" height="6" rx="3" fill="#c9a84c"/>
+    
+    <text x="20" y="34" fill="#fcd34d" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">INDIA</text>
+    <text x="20" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="19" font-weight="800">AMCA (Mk1 / Mk2)</text>
+    <text x="20" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">ADA / DRDO / HAL</text>
+    
+    <rect x="20" y="94" width="84" height="22" rx="4" fill="#2d1c10" stroke="#f97316" stroke-width="1"/>
+    <text x="62" y="109" fill="#fb923c" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">CCS APPROVED</text>
+    
+    <!-- Specs -->
+    <g transform="translate(20, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ENGINE SETUP</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Twin GE-F414 (Mk1) / 110kN (Mk2)</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ESTIMATED RCS</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">S-duct &amp; DSI stealth airframe</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX SPEED</text>
+      <text x="0" y="104" fill="#ecf0e7" font-size="12" font-weight="600">Mach 2.15 (Supercruise in Mk2)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">COMBAT RADIUS</text>
+      <text x="0" y="148" fill="#ecf0e7" font-size="12" font-weight="600">~1,620 km (Internal fuel)</text>
+      
+      <text x="0" y="176" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">KEY ADVANTAGE</text>
+      <text x="0" y="194" fill="#c9a84c" font-size="11" font-weight="600">Uttam AESA &amp; Dual Weapon Bay</text>
+      <text x="0" y="210" fill="#97a390" font-size="10.5">Customized for Himalayan high altitude</text>
+      
+      <text x="0" y="238" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">PROGRAM MILESTONE</text>
+      <text x="0" y="254" fill="#fb923c" font-size="12" font-weight="700">₹15,000 Cr CCS Approved 2024</text>
+    </g>
+  </g>
+
+  <!-- Footer Watermark -->
+  <text x="600" y="650" fill="#4d5c4b" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">VANGUARD BRIEF OSINT · OPEN SOURCE ANALYSIS · VANGUARD-BRIEF.GITHUB.IO</text>
+</svg>
