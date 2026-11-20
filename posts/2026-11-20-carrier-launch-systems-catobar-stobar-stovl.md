@@ -43,9 +43,9 @@ Let us examine each approach in detail.
 
 ## 1. CATOBAR: The Heavyweight Standard
 
-![INS Vikrant flight deck and naval aviation operations](/images/navy-ins-vikrant.jpg)
+![Naval fighter preparing for steam catapult launch with blast deflector raised](/images/carrier-catobar-launch.jpg)
 
-*A modern aircraft carrier flight deck requires precise coordination between deck elevators, blast deflectors, and angled recovery areas.*
+*Catapult launch: The aircraft's nose gear is locked into the shuttle track while steel jet blast deflectors shield the rest of the deck from afterburner heat.*
 
 CATOBAR stands for **Catapult Assisted Take-Off But Arrested Recovery**. It is the gold standard for carrier aviation developed by the British Royal Navy and perfected at scale by the United States Navy.
 
@@ -57,6 +57,10 @@ The nose gear of the fighter is attached by a launch bar to a shuttle sitting in
 ### How Recovery Works
 The landing area is set at an **angled deck** (angled roughly 8 to 10 degrees away from the ship's bow). As the pilot approaches, the aircraft lowers a heavy steel tailhook. Across the deck are stretched three or four high-strength steel cables called **arrestor crossdeck pendants**, connected below deck to hydraulic braking engines.
 
+![Aircraft tailhook snagging the arrestor crossdeck pendant during carrier recovery trap](/images/carrier-arrestor-wire-trap.jpg)
+
+*Arrested recovery: The steel tailhook catches an arrestor wire, bringing a 25-ton combat jet from 240 km/h to a full stop in just 90 metres.*
+
 The tailhook snags one of the wires (ideally the 2nd or 3rd wire), absorbing the fighter's kinetic energy and bringing a 25-ton jet from 240 km/h to a dead stop in just **90 metres and two seconds**. 
 
 *(Crucially, the moment wheels touch the deck, the pilot pushes the throttles to full military power. If the tailhook misses the wires—called a "bolter"—the aircraft has enough thrust to immediately take off again from the angled runway and circle around).*
@@ -64,15 +68,20 @@ The tailhook snags one of the wires (ideally the 2nd or 3rd wire), absorbing the
 ### Key Strengths & Limitations
 - **Advantage:** Launches fighters at 100% Maximum Take-Off Weight (MTOW) with maximum internal fuel and heavy cruise missiles.
 - **Strategic Superiority:** It is the only system that can launch heavy, low-thrust turboprop aircraft—specifically airborne early warning and control (AEW&C) planes like the **E-2D Advanced Hawkeye**. An E-2D flies at 25,000 feet, detecting low-flying sea-skimming missiles 400 km away. Without CATOBAR, a fleet must rely on smaller radar helicopters that fly lower and have much shorter radar horizons.
+
+![E-2D Advanced Hawkeye airborne early warning plane on aircraft carrier catapult](/images/carrier-e2d-hawkeye.jpg)
+
+*The Northrop Grumman E-2D Advanced Hawkeye: Heavy twin-turboprop airborne radar aircraft that can only be launched from catapult-equipped CATOBAR flight decks.*
+
 - **Drawback:** Enormous complexity, high construction cost, requires 75,000+ tons displacement, and demands immense power generation.
 
 ---
 
 ## 2. STOBAR: The Ramp & Wire Balance
 
-![INS Vikramaditya with upward-angled ski-jump bow](/images/navy-ins-vikramaditya.jpg)
+![Naval fighter launching off ski-jump flight deck ramp with afterburners glowing](/images/carrier-stobar-ski-jump.jpg)
 
-*INS Vikramaditya: Note the pronounced 14° ski-jump at the bow, designed to loft MiG-29K fighters upward into the air.*
+*Ski-jump launch: The upward curved bow ramp lofts the jet into a parabolic climb, buying vital seconds for the engines to accelerate to flying speed.*
 
 STOBAR stands for **Short Take-Off But Arrested Recovery**. It was pioneered by the Soviet Union for the *Kuznetsov* class and is the operational bedrock of both the Indian Navy (*INS Vikramaditya* and *INS Vikrant*) and the Chinese Navy (*Liaoning* and *Shandong*).
 
@@ -97,6 +106,10 @@ Recovery is identical to CATOBAR: the fighter extends an arrestor tailhook and c
 ---
 
 ## 3. STOVL: Vertical Flexibility
+
+![F-35B Lightning II hovering over aircraft carrier flight deck with vertical lift-fan open](/images/carrier-stovl-f35b-hover.jpg)
+
+*Vertical landing: An F-35B hovering motionless over the deck before touchdown, with its rear vectoring nozzle pointed 90° down and lift-fan hatch open.*
 
 STOVL stands for **Short Take-Off and Vertical Landing**. Originally developed in the 1960s for the British Hawker Siddeley Harrier, it has reached its modern peak with the supersonic fifth-generation stealth **Lockheed Martin F-35B Lightning II**.
 
