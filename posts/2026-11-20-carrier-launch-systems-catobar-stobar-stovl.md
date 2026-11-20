@@ -30,9 +30,11 @@ A Boeing F/A-18 Super Hornet or Dassault Rafale needs around 1,000 to 1,500 metr
 
 Lift is governed by airspeed over the wing:
 
-$$\text{Lift} = \frac{1}{2} \cdot \rho \cdot V^2 \cdot S \cdot C_L$$
+> **Lift = ½ · ρ · V² · S · C<sub>L</sub>**
+> 
+> *(Where **ρ** is air density, **V** is airspeed over the wing, **S** is wing surface area, and **C<sub>L</sub>** is the coefficient of lift).*
 
-To create enough lift ($L$) to overcome the aircraft's weight before running off the end of the deck, the aircraft must either:
+To create enough lift to overcome the aircraft's weight before running off the end of the deck, the aircraft must either:
 1. Be artificially accelerated to flying speed by an external machine (**Catapult**).
 2. Use raw jet thrust while being pitched upward by a curved ramp to buy extra seconds to gain speed (**Ski-jump**).
 3. Vector its engine thrust downwards to support its own weight (**Vertical thrust**).

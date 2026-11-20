@@ -10,7 +10,9 @@ const fmt=d=>new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'long',
 const inline=s=>esc(s)
   .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" loading="lazy">')
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>')
-  .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');
+  .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>')
+  .replace(/&lt;sub&gt;(.*?)&lt;\/sub&gt;/g,'<sub>$1</sub>')
+  .replace(/&lt;sup&gt;(.*?)&lt;\/sup&gt;/g,'<sup>$1</sup>');
 function md(src){
   const out=[];let list=null,para=[],tbl=[],q=null;
   const flush=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
