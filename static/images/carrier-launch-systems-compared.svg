@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e0b"/>
+      <stop offset="50%" stop-color="#121813"/>
+      <stop offset="100%" stop-color="#080b09"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182218"/>
+      <stop offset="100%" stop-color="#101610"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1d271c" stroke-width="1" opacity="0.4">
+    <line x1="60" y1="0" x2="60" y2="680"/>
+    <line x1="420" y1="0" x2="420" y2="680"/>
+    <line x1="780" y1="0" x2="780" y2="680"/>
+    <line x1="1140" y1="0" x2="1140" y2="680"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="620" x2="1200" y2="620"/>
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(60, 48)">
+    <rect x="0" y="0" width="140" height="24" rx="4" fill="#2a2310" stroke="#b9a44c" stroke-width="1"/>
+    <text x="70" y="16" fill="#f0c642" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.5">NAVAL AEROSPACE</text>
+    
+    <text x="0" y="52" fill="#ecf0e7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" letter-spacing="0.5">Aircraft Carrier Launch &amp; Recovery Systems Compared</text>
+    <text x="0" y="74" fill="#97a390" font-family="system-ui, -apple-system, sans-serif" font-size="13">Architectural breakdown: Catapults vs Ski-Jumps vs Vertical Lift — physics, payload limits, and operational fleets.</text>
+  </g>
+
+  <!-- 3 Comparison Columns -->
+  <!-- CARD 1: CATOBAR -->
+  <g transform="translate(60, 140)" filter="url(#shadow)">
+    <rect width="340" height="460" rx="10" fill="url(#cardGrad)" stroke="#273625" stroke-width="1.5"/>
+    <rect x="0" y="0" width="340" height="6" rx="3" fill="#3b82f6"/>
+    
+    <text x="24" y="34" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">STEAM &amp; EMALS CATAPULTS</text>
+    <text x="24" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">CATOBAR</text>
+    <text x="24" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Catapult Assisted Take-Off But Arrested Recovery</text>
+    
+    <rect x="24" y="94" width="128" height="22" rx="4" fill="#14311e" stroke="#22c55e" stroke-width="1"/>
+    <text x="88" y="109" fill="#4ade80" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">MAX PAYLOAD / RANGE</text>
+    
+    <g transform="translate(24, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">LAUNCH MECHANISM</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Steam Catapults (C-13) / EMALS Maglev</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">RECOVERY SYSTEM</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">3-4 Arrestor Crossdeck Pendants (Wires)</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX TAKEOFF WEIGHT (MTOW)</text>
+      <text x="0" y="104" fill="#4ade80" font-size="12" font-weight="700">100% Full Fuel &amp; Max Heavy Weapons (~33-35 tons)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">CRITICAL ADVANTAGE</text>
+      <text x="0" y="150" fill="#c9a84c" font-size="11.5" font-weight="600">Can launch heavy fixed-wing airborne radar</text>
+      <text x="0" y="168" fill="#97a390" font-size="11">Launches E-2D Hawkeye, cargo &amp; drones</text>
+      
+      <text x="0" y="196" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">OPERATING NATIONS &amp; SHIPS</text>
+      <text x="0" y="214" fill="#ecf0e7" font-size="12" font-weight="600">US Navy: Nimitz &amp; Gerald R. Ford class (11)</text>
+      <text x="0" y="232" fill="#ecf0e7" font-size="12" font-weight="600">France: Charles de Gaulle (1)</text>
+      <text x="0" y="250" fill="#ecf0e7" font-size="12" font-weight="600">China: Fujian (Type 003 — EMALS sea trials)</text>
+    </g>
+  </g>
+
+  <!-- CARD 2: STOBAR -->
+  <g transform="translate(430, 140)" filter="url(#shadow)">
+    <rect width="340" height="460" rx="10" fill="url(#cardGrad)" stroke="#c9a84c" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="6" rx="3" fill="#c9a84c"/>
+    
+    <text x="24" y="34" fill="#fcd34d" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">SKI-JUMP + ARRESTED WIRES</text>
+    <text x="24" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">STOBAR</text>
+    <text x="24" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Short Take-Off But Arrested Recovery</text>
+    
+    <rect x="24" y="94" width="138" height="22" rx="4" fill="#2a2310" stroke="#b9a44c" stroke-width="1"/>
+    <text x="93" y="109" fill="#f0c642" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">RELIABLE &amp; SIMPLIFIED</text>
+    
+    <g transform="translate(24, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">LAUNCH MECHANISM</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Upward-curved 12°-14° Bow Ski-Jump ramp</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">RECOVERY SYSTEM</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">3 Hydraulic Arrestor Cables on angled deck</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX TAKEOFF WEIGHT (MTOW)</text>
+      <text x="0" y="104" fill="#f0c642" font-size="12" font-weight="700">Restricted by aircraft own thrust-to-weight</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">ENGINEERING BALANCE</text>
+      <text x="0" y="150" fill="#c9a84c" font-size="11.5" font-weight="600">Zero catapult steam/power demand</text>
+      <text x="0" y="168" fill="#97a390" font-size="11">Cannot launch heavy propeller AWACS</text>
+      
+      <text x="0" y="196" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">OPERATING NATIONS &amp; SHIPS</text>
+      <text x="0" y="214" fill="#ecf0e7" font-size="12" font-weight="600">India: INS Vikrant &amp; INS Vikramaditya (2)</text>
+      <text x="0" y="232" fill="#ecf0e7" font-size="12" font-weight="600">China: Liaoning &amp; Shandong (2)</text>
+      <text x="0" y="250" fill="#ecf0e7" font-size="12" font-weight="600">Russia: Admiral Kuznetsov (1)</text>
+    </g>
+  </g>
+
+  <!-- CARD 3: STOVL -->
+  <g transform="translate(800, 140)" filter="url(#shadow)">
+    <rect width="340" height="460" rx="10" fill="url(#cardGrad)" stroke="#273625" stroke-width="1.5"/>
+    <rect x="0" y="0" width="340" height="6" rx="3" fill="#10b981"/>
+    
+    <text x="24" y="34" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">SKI-JUMP + VERTICAL HOVER</text>
+    <text x="24" y="60" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">STOVL</text>
+    <text x="24" y="78" fill="#97a390" font-family="system-ui, sans-serif" font-size="12">Short Take-Off and Vertical Landing</text>
+    
+    <rect x="24" y="94" width="138" height="22" rx="4" fill="#0d2e1f" stroke="#10b981" stroke-width="1"/>
+    <text x="93" y="109" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">COMPACT HULL FLEXIBILITY</text>
+    
+    <g transform="translate(24, 136)" font-family="system-ui, sans-serif">
+      <text x="0" y="0" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">LAUNCH MECHANISM</text>
+      <text x="0" y="16" fill="#ecf0e7" font-size="12" font-weight="600">Short rolling deck run with ski-jump or flat</text>
+      
+      <text x="0" y="44" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">RECOVERY SYSTEM</text>
+      <text x="0" y="60" fill="#ecf0e7" font-size="12" font-weight="600">Zero wires — aircraft hovers &amp; touches down</text>
+      
+      <text x="0" y="88" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">MAX TAKEOFF WEIGHT (MTOW)</text>
+      <text x="0" y="104" fill="#34d399" font-size="12" font-weight="700">Limited by hover weight (landing bring-back)</text>
+      
+      <text x="0" y="132" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">CRITICAL ADVANTAGE</text>
+      <text x="0" y="150" fill="#c9a84c" font-size="11.5" font-weight="600">Operates from amphibious assault decks</text>
+      <text x="0" y="168" fill="#97a390" font-size="11">Turn light carriers &amp; LHDs into 5th-gen hosts</text>
+      
+      <text x="0" y="196" fill="#718072" font-size="10" font-weight="700" letter-spacing="0.5">OPERATING NATIONS &amp; SHIPS</text>
+      <text x="0" y="214" fill="#ecf0e7" font-size="12" font-weight="600">UK Royal Navy: Queen Elizabeth class (2)</text>
+      <text x="0" y="232" fill="#ecf0e7" font-size="12" font-weight="600">US Marine Corps: Wasp &amp; America LHDs (9)</text>
+      <text x="0" y="250" fill="#ecf0e7" font-size="12" font-weight="600">Italy: Cavour / Japan: Izumo conversions</text>
+    </g>
+  </g>
+
+  <!-- Footer Watermark -->
+  <text x="600" y="650" fill="#4d5c4b" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">VANGUARD BRIEF OSINT · OPEN SOURCE ANALYSIS · VANGUARD-BRIEF.GITHUB.IO</text>
+</svg>
